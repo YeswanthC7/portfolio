@@ -39,9 +39,10 @@
             padding: 1.5rem 0;
             position: sticky;
             top: 0;
-            background-color: var(--primary-blue);
+            background-color: rgba(27, 94, 143, 0.85); /* Semi-transparent background */
             z-index: 100;
             border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(5px);
         }
 
         .main-header .container {
@@ -57,48 +58,68 @@
             text-decoration: none;
         }
 
+        .main-nav {
+            display: none; /* Hidden by default, shown on desktop */
+        }
+        
+        .main-nav.active {
+            display: block; /* Show on mobile when active */
+            position: absolute;
+            top: 100%;
+            left: 0;
+            width: 100%;
+            background-color: var(--primary-blue);
+            padding: 1rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
         .main-nav ul {
             margin: 0;
             padding: 0;
             list-style: none;
             display: flex;
+            flex-direction: column; /* Mobile first */
             align-items: center;
+            width: 100%;
+        }
+        
+        .main-nav li {
+            width: 100%;
+            text-align: center;
         }
 
         .main-nav a {
             color: var(--medium-text);
             text-decoration: none;
-            padding: 0.5rem 1rem;
-            transition: color 0.3s ease;
+            padding: 1rem;
+            display: block;
+            transition: color 0.3s ease, background-color 0.3s ease;
             font-weight: 500;
         }
 
-        .main-nav a:hover, .main-nav a.active {
+        .main-nav a:hover, .main-nav a.active-link {
             color: var(--light-text);
+            background-color: rgba(255, 255, 255, 0.05);
         }
         
-        .nav-socials a {
-            margin-left: 1rem;
-        }
-
-        .nav-socials svg {
-            fill: var(--medium-text);
-            transition: fill 0.3s ease;
-        }
-        .nav-socials a:hover svg {
-            fill: var(--light-text);
+        .nav-socials {
+            display: none; /* Hide socials in mobile dropdown */
         }
 
         .mobile-menu-button {
-            display: none;
+            display: block; /* Show on mobile */
             background: none;
             border: none;
             cursor: pointer;
+            padding: 0;
+        }
+        .mobile-menu-button svg {
+            stroke: var(--light-text);
         }
 
         /* --- Hero Section --- */
         .hero {
-            padding: 6rem 0;
+            padding: 6rem 0 0 0; /* Reduced padding */
             text-align: left;
         }
 
@@ -119,7 +140,7 @@
             border: 0;
             height: 1px;
             background: rgba(255, 255, 255, 0.1);
-            margin: 4rem 0;
+            margin: 4rem 0 2rem 0; /* Reduced margin */
         }
 
         /* --- Main Content Sections --- */
@@ -128,7 +149,7 @@
         }
 
         .content-section {
-            padding: 3rem 0;
+            padding: 3rem 0; /* Reduced padding */
             border-bottom: 1px solid rgba(255, 255, 255, 0.1);
         }
         .content-section:last-child {
@@ -137,8 +158,8 @@
         
         .section-grid {
             display: grid;
-            grid-template-columns: 1fr 3fr;
-            gap: 4rem;
+            grid-template-columns: 1fr;
+            gap: 2rem;
         }
 
         .section-title {
@@ -147,6 +168,7 @@
             text-transform: uppercase;
             letter-spacing: 1px;
             color: var(--medium-text);
+            margin-bottom: 1rem;
         }
 
         .section-content p {
@@ -154,7 +176,7 @@
         }
         
         .timeline-item {
-            margin-bottom: 2.5rem;
+            margin-bottom: 3rem;
         }
         .timeline-item:last-child {
             margin-bottom: 0;
@@ -183,7 +205,10 @@
         
         /* Skills */
         .skills-category {
-            margin-bottom: 2rem;
+            margin-bottom: 2.5rem;
+        }
+        .skills-category:last-child {
+            margin-bottom: 0;
         }
         .skills-category h4 {
             margin: 0 0 1rem 0;
@@ -193,7 +218,7 @@
         .skills-list {
             display: flex;
             flex-wrap: wrap;
-            gap: 0.5rem;
+            gap: 0.75rem;
             padding: 0;
             margin: 0;
             list-style: none;
@@ -239,7 +264,7 @@
             border-radius: 8px;
             text-decoration: none;
             font-weight: 600;
-            margin-top: 1rem;
+            margin-top: 1.5rem;
             transition: background-color 0.3s ease;
         }
         .resume-button:hover {
@@ -249,28 +274,49 @@
         /* Footer */
         .main-footer {
             text-align: center;
-            padding: 2rem 0;
+            padding: 3rem 0 2rem 0;
             color: var(--medium-text);
             font-size: 0.9rem;
         }
 
-        /* --- Responsive Design --- */
-        @media (max-width: 768px) {
-            .main-nav {
+        /* --- Desktop Styles --- */
+        @media (min-width: 768px) {
+            .mobile-menu-button {
                 display: none;
             }
-            .mobile-menu-button {
+            .main-nav {
                 display: block;
+                position: static;
+                width: auto;
+                background-color: transparent;
+                padding: 0;
+                border: none;
             }
-            .hero-text h1 {
-                font-size: 2.2rem;
+            .main-nav ul {
+                flex-direction: row;
+                align-items: center;
+            }
+            .main-nav li {
+                width: auto;
+            }
+            .main-nav a {
+                padding: 0.5rem 1rem;
+                display: inline-block;
+            }
+            .nav-socials {
+                display: flex;
+                align-items: center;
+                margin-left: 1rem;
+            }
+            .nav-socials a {
+                margin-left: 1rem;
             }
             .section-grid {
-                grid-template-columns: 1fr;
-                gap: 1.5rem;
+                grid-template-columns: 1fr 3fr;
+                gap: 3rem;
             }
             .section-title {
-                margin-bottom: 1rem;
+                margin-bottom: 0;
             }
         }
     </style>
@@ -280,7 +326,10 @@
     <header class="main-header">
         <div class="container">
             <a href="#" class="logo">Yeswanth Chandrasekhar</a>
-            <nav class="main-nav">
+            <button class="mobile-menu-button" id="menu-toggle">
+                 <svg width="24" height="24" fill="none" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+            </button>
+            <nav class="main-nav" id="main-menu">
                 <ul>
                     <li><a href="#about">About</a></li>
                     <li><a href="#experience">Experience</a></li>
@@ -290,17 +339,14 @@
                     <li><a href="#contact">Contact</a></li>
                     <li class="nav-socials">
                         <a href="https://github.com/YeswanthC7" target="_blank" rel="noopener noreferrer" title="GitHub">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M12 2C6.477 2 2 6.477 2 12c0 4.419 2.865 8.166 6.839 9.489.5.09.682-.218.682-.484 0-.238-.009-.868-.014-1.703-2.782.604-3.369-1.342-3.369-1.342-.454-1.157-1.11-1.465-1.11-1.465-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.089 2.91.832.092-.647.35-1.089.636-1.339-2.22-.252-4.555-1.112-4.555-4.943 0-1.091.39-1.984 1.03-2.682-.103-.253-.446-1.27.098-2.645 0 0 .84-.269 2.75 1.025A9.549 9.549 0 0 1 12 6.836c.85.004 1.705.114 2.504.336 1.909-1.294 2.747-1.025 2.747-1.025.546 1.375.201 2.392.1 2.645.64.698 1.026 1.59 1.026 2.682 0 3.841-2.339 4.689-4.566 4.932.359.308.678.92.678 1.852 0 1.336-.012 2.414-.012 2.742 0 .268.18.578.688.48A10.001 10.001 0 0 0 22 12c0-5.523-4.477-10-10-10Z" clip-rule="evenodd"/></svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path fill-rule="evenodd" d="M12 2C6.477 2 2 6.477 2 12c0 4.419 2.865 8.166 6.839 9.489.5.09.682-.218.682-.484 0-.238-.009-.868-.014-1.703-2.782.604-3.369-1.342-3.369-1.342-.454-1.157-1.11-1.465-1.11-1.465-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.089 2.91.832.092-.647.35-1.089.636-1.339-2.22-.252-4.555-1.112-4.555-4.943 0-1.091.39-1.984 1.03-2.682-.103-.253-.446-1.27.098-2.645 0 0 .84-.269 2.75 1.025A9.549 9.549 0 0 1 12 6.836c.85.004 1.705.114 2.504.336 1.909-1.294 2.747-1.025 2.747-1.025.546 1.375.201 2.392.1 2.645.64.698 1.026 1.59 1.026 2.682 0 3.841-2.339 4.689-4.566 4.932.359.308.678.92.678 1.852 0 1.336-.012 2.414-.012 2.742 0 .268.18.578.688.48A10.001 10.001 0 0 0 22 12c0-5.523-4.477-10-10-10Z" clip-rule="evenodd"/></svg>
                         </a>
                         <a href="https://linkedin.com/in/yeswanth-c" target="_blank" rel="noopener noreferrer" title="LinkedIn">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14Zm-8 6H8v7h3v-7Zm-1.5-2.25a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3ZM16 11h-2v1.5c0 .83-.02 1.88-1.12 1.88C11.76 14.38 11 13.5 11 12V9h-3v7h3v-3.5c0-.88.16-1.75 1.25-1.75s1.09.81 1.09 1.75V16h3v-5Z" clip-rule="evenodd"/></svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14Zm-8 6H8v7h3v-7Zm-1.5-2.25a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3ZM16 11h-2v1.5c0 .83-.02 1.88-1.12 1.88C11.76 14.38 11 13.5 11 12V9h-3v7h3v-3.5c0-.88.16-1.75 1.25-1.75s1.09.81 1.09 1.75V16h3v-5Z" clip-rule="evenodd"/></svg>
                         </a>
                     </li>
                 </ul>
             </nav>
-            <button class="mobile-menu-button">
-                 <svg width="24" height="24" fill="white" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"></path></svg>
-            </button>
         </div>
     </header>
 
@@ -482,5 +528,13 @@
         <p>&copy; 2024 Yeswanth Chandrasekhar. Built with a sprinkle of masala.</p>
     </footer>
 
+    <script>
+        const menuToggle = document.getElementById('menu-toggle');
+        const mainMenu = document.getElementById('main-menu');
+
+        menuToggle.addEventListener('click', () => {
+            mainMenu.classList.toggle('active');
+        });
+    </script>
 </body>
 </html>
