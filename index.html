@@ -15,6 +15,8 @@
             --dark-text: #0f172a;
             --accent-light: #e0f2fe;
             --accent-dark: #0ea5e9;
+            --button-bg: #0ea5e9;
+            --button-hover-bg: #0284c7;
         }
 
         body {
@@ -96,38 +98,21 @@
 
         /* --- Hero Section --- */
         .hero {
-            padding: 5rem 0;
+            padding: 6rem 0;
             text-align: left;
         }
 
-        .hero-content {
-            display: flex;
-            align-items: center;
-            gap: 4rem;
-        }
-
-        .hero-image img {
-            width: 180px;
-            height: 180px;
-            border-radius: 50%;
-            border: 5px solid rgba(255, 255, 255, 0.2);
-            object-fit: cover;
-        }
-
         .hero-text h1 {
-            font-size: 2.8rem;
-            margin: 0 0 1rem 0;
+            font-size: 3.2rem;
+            margin: 0 0 1.5rem 0;
             line-height: 1.2;
+            max-width: 800px;
         }
         
-        .hero-text h1 span {
-            font-weight: 400;
-        }
-
         .hero-text p {
             font-size: 1.2rem;
             color: var(--medium-text);
-            max-width: 600px;
+            max-width: 700px;
         }
         
         .hero-divider {
@@ -233,6 +218,34 @@
             color: var(--accent-dark);
         }
         
+        /* Contact & Resume Button */
+        .contact-details p {
+            margin: 0 0 1rem 0;
+            font-size: 1.1rem;
+        }
+        .contact-details a {
+            color: var(--light-text);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        .contact-details a:hover {
+            color: var(--accent-dark);
+        }
+        .resume-button {
+            display: inline-block;
+            background-color: var(--button-bg);
+            color: var(--light-text);
+            padding: 0.8rem 1.5rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            margin-top: 1rem;
+            transition: background-color 0.3s ease;
+        }
+        .resume-button:hover {
+            background-color: var(--button-hover-bg);
+        }
+        
         /* Footer */
         .main-footer {
             text-align: center;
@@ -248,11 +261,6 @@
             }
             .mobile-menu-button {
                 display: block;
-            }
-            .hero-content {
-                flex-direction: column;
-                text-align: center;
-                gap: 2rem;
             }
             .hero-text h1 {
                 font-size: 2.2rem;
@@ -279,6 +287,7 @@
                     <li><a href="#projects">Projects</a></li>
                     <li><a href="#skills">Skills</a></li>
                     <li><a href="#certifications">Certifications</a></li>
+                    <li><a href="#contact">Contact</a></li>
                     <li class="nav-socials">
                         <a href="https://github.com/YeswanthC7" target="_blank" rel="noopener noreferrer" title="GitHub">
                             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M12 2C6.477 2 2 6.477 2 12c0 4.419 2.865 8.166 6.839 9.489.5.09.682-.218.682-.484 0-.238-.009-.868-.014-1.703-2.782.604-3.369-1.342-3.369-1.342-.454-1.157-1.11-1.465-1.11-1.465-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.089 2.91.832.092-.647.35-1.089.636-1.339-2.22-.252-4.555-1.112-4.555-4.943 0-1.091.39-1.984 1.03-2.682-.103-.253-.446-1.27.098-2.645 0 0 .84-.269 2.75 1.025A9.549 9.549 0 0 1 12 6.836c.85.004 1.705.114 2.504.336 1.909-1.294 2.747-1.025 2.747-1.025.546 1.375.201 2.392.1 2.645.64.698 1.026 1.59 1.026 2.682 0 3.841-2.339 4.689-4.566 4.932.359.308.678.92.678 1.852 0 1.336-.012 2.414-.012 2.742 0 .268.18.578.688.48A10.001 10.001 0 0 0 22 12c0-5.523-4.477-10-10-10Z" clip-rule="evenodd"/></svg>
@@ -290,7 +299,7 @@
                 </ul>
             </nav>
             <button class="mobile-menu-button">
-                 <svg width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+                 <svg width="24" height="24" fill="white" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"></path></svg>
             </button>
         </div>
     </header>
@@ -298,14 +307,9 @@
     <main class="container">
 
         <section class="hero">
-            <div class="hero-content">
-                <div class="hero-image">
-                    <img src="https://ui-avatars.com/api/?name=Yeswanth+Chandrasekhar&size=200&background=0ea5e9&color=fff" alt="Yeswanth Chandrasekhar">
-                </div>
-                <div class="hero-text">
-                    <h1><span>Graduate of UTD's Master's in Business Analytics & AI,</span> passionate about DevOps, backend engineering, and automation.</h1>
-                    <p>I build reliable infrastructure and innovative, automated solutions for software quality and deployment.</p>
-                </div>
+            <div class="hero-text">
+                <h1>Crafting Resilient Infrastructure & Intelligent Automation</h1>
+                <p>A DevOps and Backend Engineer translating complex problems into scalable, high-performance digital solutions.</p>
             </div>
             <hr class="hero-divider">
         </section>
@@ -313,7 +317,7 @@
         <div id="about" class="content-section section-grid">
             <h2 class="section-title">About</h2>
             <div class="section-content">
-                <p>A DevOps and Backend Engineer with a foundation in computer science and a Master's degree in Business Analytics and AI. I am passionate about building reliable, scalable infrastructure and leveraging automation to improve software quality and development lifecycles. My experience spans from backend API testing and CI/CD pipeline management to prototyping innovative, AI-driven QA solutions.</p>
+                <p>With a Master's in Business Analytics & AI and a strong foundation in computer science, I bridge the gap between development and operations. I specialize in building robust CI/CD pipelines, containerizing applications for maximum efficiency, and leveraging automation to enhance software quality. My experience ranges from backend API testing to prototyping innovative, AI-driven QA solutions, always with a focus on creating stable, scalable, and maintainable systems.</p>
             </div>
         </div>
 
@@ -412,13 +416,19 @@
                 <div class="skills-category">
                     <h4>Cloud & DevOps</h4>
                     <ul class="skills-list">
-                        <li class="skill-tag">AWS (Lambda, ECS)</li><li class="skill-tag">Azure</li><li class="skill-tag">Docker</li><li class="skill-tag">Kubernetes</li><li class="skill-tag">Ansible</li><li class="skill-tag">CI/CD</li><li class="skill-tag">GitHub Actions</li><li class="skill-tag">Datadog</li>
+                        <li class="skill-tag">AWS (Lambda, ECS)</li><li class="skill-tag">Azure</li><li class="skill-tag">Docker</li><li class="skill-tag">Kubernetes</li><li class="skill-tag">Ansible</li><li class="skill-tag">CI/CD (Bamboo)</li><li class="skill-tag">GitHub Actions</li><li class="skill-tag">Datadog</li>
                     </ul>
                 </div>
                 <div class="skills-category">
                     <h4>Testing & QA</h4>
                     <ul class="skills-list">
-                        <li class="skill-tag">Playwright</li><li class="skill-tag">Selenium</li><li class="skill-tag">TestNG</li><li class="skill-tag">JUnit</li><li class="skill-tag">Cucumber (BDD)</li><li class="skill-tag">API Testing</li><li class="skill-tag">Performance Testing</li><li class="skill-tag">A/B Testing</li>
+                        <li class="skill-tag">Playwright</li><li class="skill-tag">Selenium WebDriver</li><li class="skill-tag">TestNG</li><li class="skill-tag">JUnit</li><li class="skill-tag">Cucumber (BDD)</li><li class="skill-tag">Appium</li><li class="skill-tag">API Testing</li><li class="skill-tag">Performance Testing</li><li class="skill-tag">Security Testing</li><li class="skill-tag">QA Methodologies</li>
+                    </ul>
+                </div>
+                 <div class="skills-category">
+                    <h4>Miscellaneous</h4>
+                    <ul class="skills-list">
+                        <li class="skill-tag">KNIME</li><li class="skill-tag">Tableau</li><li class="skill-tag">Power BI</li><li class="skill-tag">Git</li><li class="skill-tag">Data Structures</li><li class="skill-tag">Predictive Analytics</li><li class="skill-tag">Prompt Engineering</li><li class="skill-tag">Matter Protocol</li>
                     </ul>
                 </div>
             </div>
@@ -438,6 +448,30 @@
                 <div class="timeline-item">
                     <h3><a href="#" class="item-link">Academy Accreditation - Generative AI Fundamentals</a></h3>
                     <span class="date">Databricks</span>
+                </div>
+                <div class="timeline-item">
+                    <h3><a href="#" class="item-link">Academy Accreditation - Databricks Fundamentals</a></h3>
+                    <span class="date">Databricks</span>
+                </div>
+                 <div class="timeline-item">
+                    <h3><a href="#" class="item-link">Data Science Tools</a></h3>
+                    <span class="date">IBM</span>
+                </div>
+                 <div class="timeline-item">
+                    <h3><a href="#" class="item-link">Machine Learning</a></h3>
+                    <span class="date">Duke University | Coursera</span>
+                </div>
+            </div>
+        </div>
+        
+        <div id="contact" class="content-section section-grid">
+            <h2 class="section-title">Contact</h2>
+            <div class="section-content">
+                <div class="contact-details">
+                    <p>Feel free to reach out. I'm always open to discussing new projects, creative ideas, or opportunities to be part of an ambitious team.</p>
+                    <p><strong>Email:</strong> <a href="mailto:yeswanthchandrasekhar7@gmail.com">yeswanthchandrasekhar7@gmail.com</a></p>
+                    <p><strong>Phone:</strong> +1 737-497-2105</p>
+                    <a href="./Yeswanth_Resume_2025.pdf" download="Yeswanth-Chandrasekhar-Resume.pdf" class="resume-button">Download Résumé</a>
                 </div>
             </div>
         </div>
