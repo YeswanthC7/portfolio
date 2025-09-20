@@ -39,7 +39,7 @@
             padding: 1.5rem 0;
             position: sticky;
             top: 0;
-            background-color: rgba(27, 94, 143, 0.85); /* Semi-transparent background */
+            background-color: rgba(27, 94, 143, 0.85);
             z-index: 100;
             border-bottom: 1px solid rgba(255, 255, 255, 0.1);
             backdrop-filter: blur(5px);
@@ -59,265 +59,70 @@
         }
 
         .main-nav {
-            display: none; /* Hidden by default, shown on desktop */
+            display: none;
         }
-        
-        .main-nav.active {
-            display: block; /* Show on mobile when active */
-            position: absolute;
-            top: 100%;
-            left: 0;
-            width: 100%;
-            background-color: var(--primary-blue);
-            padding: 1rem 0;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-        }
+        .main-nav.active { display: block; position: absolute; top: 100%; left: 0; width: 100%; background-color: var(--primary-blue); padding: 1rem 0; border-bottom: 1px solid rgba(255, 255, 255, 0.1); }
+        .main-nav ul { margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; align-items: center; width: 100%; }
+        .main-nav li { width: 100%; text-align: center; }
+        .main-nav a { color: var(--medium-text); text-decoration: none; padding: 1rem; display: block; transition: color 0.3s ease, background-color 0.3s ease; font-weight: 500; }
+        .main-nav a:hover, .main-nav a.active-link { color: var(--light-text); background-color: rgba(255, 255, 255, 0.05); }
+        .nav-socials { display: none; }
 
-        .main-nav ul {
-            margin: 0;
-            padding: 0;
-            list-style: none;
-            display: flex;
-            flex-direction: column; /* Mobile first */
-            align-items: center;
-            width: 100%;
-        }
-        
-        .main-nav li {
-            width: 100%;
-            text-align: center;
-        }
-
-        .main-nav a {
-            color: var(--medium-text);
-            text-decoration: none;
-            padding: 1rem;
-            display: block;
-            transition: color 0.3s ease, background-color 0.3s ease;
-            font-weight: 500;
-        }
-
-        .main-nav a:hover, .main-nav a.active-link {
-            color: var(--light-text);
-            background-color: rgba(255, 255, 255, 0.05);
-        }
-        
-        .nav-socials {
-            display: none; /* Hide socials in mobile dropdown */
-        }
-
-        .mobile-menu-button {
-            display: block; /* Show on mobile */
-            background: none;
-            border: none;
-            cursor: pointer;
-            padding: 0;
-        }
-        .mobile-menu-button svg {
-            stroke: var(--light-text);
-        }
+        .mobile-menu-button { display: block; background: none; border: none; cursor: pointer; padding: 0; }
+        .mobile-menu-button svg { stroke: var(--light-text); }
 
         /* --- Hero Section --- */
-        .hero {
-            padding: 6rem 0 0 0; /* Reduced padding */
-            text-align: left;
-        }
-
-        .hero-text h1 {
-            font-size: 3.2rem;
-            margin: 0 0 1.5rem 0;
-            line-height: 1.2;
-            max-width: 800px;
-        }
-        
-        .hero-text p {
-            font-size: 1.2rem;
-            color: var(--medium-text);
-            max-width: 700px;
-        }
-        
-        .hero-divider {
-            border: 0;
-            height: 1px;
-            background: rgba(255, 255, 255, 0.1);
-            margin: 4rem 0 2rem 0; /* Reduced margin */
-        }
+        .hero { padding: 6rem 0 0 0; text-align: left; }
+        .hero-text h1 { font-size: 3.2rem; margin: 0 0 1.5rem 0; line-height: 1.2; max-width: 800px; }
+        .hero-text p { font-size: 1.2rem; color: var(--medium-text); max-width: 700px; }
+        .hero-divider { border: 0; height: 1px; background: rgba(255, 255, 255, 0.1); margin: 4rem 0 2rem 0; }
 
         /* --- Main Content Sections --- */
-        main {
-            padding-bottom: 5rem;
-        }
+        main { padding-bottom: 5rem; }
+        .content-section { padding: 3rem 0; border-bottom: 1px solid rgba(255, 255, 255, 0.1); }
+        .content-section:last-child { border-bottom: none; }
+        .section-grid { display: grid; grid-template-columns: 1fr; gap: 2rem; }
+        .section-title { font-size: 1.1rem; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; color: var(--medium-text); margin-bottom: 1rem; }
+        .section-content p { margin-top: 0; }
+        .timeline-item { margin-bottom: 3rem; }
+        .timeline-item:last-child { margin-bottom: 0; }
+        .timeline-item h3 { margin: 0; font-size: 1.25rem; font-weight: 600; }
+        .timeline-item h3 .company { color: var(--accent-dark); }
+        .timeline-item .date { font-size: 0.9rem; color: var(--medium-text); margin-bottom: 0.5rem; display: block; }
+        .timeline-item .description { font-size: 1rem; color: var(--medium-text); }
 
-        .content-section {
-            padding: 3rem 0; /* Reduced padding */
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-        }
-        .content-section:last-child {
-            border-bottom: none;
-        }
-        
-        .section-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 2rem;
-        }
-
-        .section-title {
-            font-size: 1.1rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            color: var(--medium-text);
-            margin-bottom: 1rem;
-        }
-
-        .section-content p {
-            margin-top: 0;
-        }
-        
-        .timeline-item {
-            margin-bottom: 3rem;
-        }
-        .timeline-item:last-child {
-            margin-bottom: 0;
-        }
-
-        .timeline-item h3 {
-            margin: 0;
-            font-size: 1.25rem;
-            font-weight: 600;
-        }
-        .timeline-item h3 .company {
-            color: var(--accent-dark);
-        }
-
-        .timeline-item .date {
-            font-size: 0.9rem;
-            color: var(--medium-text);
-            margin-bottom: 0.5rem;
-            display: block;
-        }
-        
-        .timeline-item .description {
-            font-size: 1rem;
-            color: var(--medium-text);
-        }
-        
         /* Skills */
-        .skills-category {
-            margin-bottom: 2.5rem;
-        }
-        .skills-category:last-child {
-            margin-bottom: 0;
-        }
-        .skills-category h4 {
-            margin: 0 0 1rem 0;
-            font-size: 1.1rem;
-            font-weight: 600;
-        }
-        .skills-list {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.75rem;
-            padding: 0;
-            margin: 0;
-            list-style: none;
-        }
-        .skill-tag {
-            background-color: var(--accent-light);
-            color: var(--dark-text);
-            padding: 0.3rem 0.8rem;
-            border-radius: 9999px;
-            font-size: 0.9rem;
-            font-weight: 500;
-        }
+        .skills-category { margin-bottom: 2.5rem; }
+        .skills-category:last-child { margin-bottom: 0; }
+        .skills-category h4 { margin: 0 0 1rem 0; font-size: 1.1rem; font-weight: 600; }
+        .skills-list { display: flex; flex-wrap: wrap; gap: 0.75rem; padding: 0; margin: 0; list-style: none; }
+        .skill-tag { background-color: var(--accent-light); color: var(--dark-text); padding: 0.3rem 0.8rem; border-radius: 9999px; font-size: 0.9rem; font-weight: 500; }
 
         /* Project & Cert Links */
-        .item-link {
-            display: inline-block;
-            text-decoration: none;
-            color: var(--light-text);
-            transition: color 0.3s ease;
-        }
-        .item-link:hover {
-            color: var(--accent-dark);
-        }
-        
+        .item-link { display: inline-block; text-decoration: none; color: var(--light-text); transition: color 0.3s ease; }
+        .item-link:hover { color: var(--accent-dark); }
+
         /* Contact & Resume Button */
-        .contact-details p {
-            margin: 0 0 1rem 0;
-            font-size: 1.1rem;
-        }
-        .contact-details a {
-            color: var(--light-text);
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
-        .contact-details a:hover {
-            color: var(--accent-dark);
-        }
-        .resume-button {
-            display: inline-block;
-            background-color: var(--button-bg);
-            color: var(--light-text);
-            padding: 0.8rem 1.5rem;
-            border-radius: 8px;
-            text-decoration: none;
-            font-weight: 600;
-            margin-top: 1.5rem;
-            transition: background-color 0.3s ease;
-        }
-        .resume-button:hover {
-            background-color: var(--button-hover-bg);
-        }
-        
+        .contact-details p { margin: 0 0 1rem 0; font-size: 1.1rem; }
+        .contact-details a { color: var(--light-text); text-decoration: none; transition: color 0.3s ease; }
+        .contact-details a:hover { color: var(--accent-dark); }
+        .resume-button { display: inline-block; background-color: var(--button-bg); color: var(--light-text); padding: 0.8rem 1.5rem; border-radius: 8px; text-decoration: none; font-weight: 600; margin-top: 1.5rem; transition: background-color 0.3s ease; }
+        .resume-button:hover { background-color: var(--button-hover-bg); }
+
         /* Footer */
-        .main-footer {
-            text-align: center;
-            padding: 3rem 0 2rem 0;
-            color: var(--medium-text);
-            font-size: 0.9rem;
-        }
+        .main-footer { text-align: center; padding: 3rem 0 2rem 0; color: var(--medium-text); font-size: 0.9rem; }
 
         /* --- Desktop Styles --- */
         @media (min-width: 768px) {
-            .mobile-menu-button {
-                display: none;
-            }
-            .main-nav {
-                display: block;
-                position: static;
-                width: auto;
-                background-color: transparent;
-                padding: 0;
-                border: none;
-            }
-            .main-nav ul {
-                flex-direction: row;
-                align-items: center;
-            }
-            .main-nav li {
-                width: auto;
-            }
-            .main-nav a {
-                padding: 0.5rem 1rem;
-                display: inline-block;
-            }
-            .nav-socials {
-                display: flex;
-                align-items: center;
-                margin-left: 1rem;
-            }
-            .nav-socials a {
-                margin-left: 1rem;
-            }
-            .section-grid {
-                grid-template-columns: 1fr 3fr;
-                gap: 3rem;
-            }
-            .section-title {
-                margin-bottom: 0;
-            }
+            .mobile-menu-button { display: none; }
+            .main-nav { display: block; position: static; width: auto; background-color: transparent; padding: 0; border: none; }
+            .main-nav ul { flex-direction: row; align-items: center; }
+            .main-nav li { width: auto; }
+            .main-nav a { padding: 0.5rem 1rem; display: inline-block; }
+            .nav-socials { display: flex; align-items: center; margin-left: 1rem; }
+            .nav-socials a { margin-left: 1rem; }
+            .section-grid { grid-template-columns: 1fr 3fr; gap: 3rem; }
+            .section-title { margin-bottom: 0; }
         }
     </style>
 </head>
@@ -412,6 +217,33 @@
         <div id="projects" class="content-section section-grid">
             <h2 class="section-title">Projects</h2>
             <div class="section-content">
+                <!-- NEW: WishlistBot -->
+                <div class="timeline-item">
+                    <h3>WishlistBot — Discord Wishlist Manager</h3>
+                    <p class="description">A Discord bot that lets users drop any product link (Amazon, Puma, Nike, or any site) and automatically scrapes the title and price into a persistent, user‑scoped wishlist. Supports quick <code>!wishlist</code> to view the latest 5 items and <code>!wishlist all</code> for full pagination with ⏮️/⏭️ reactions. Clean embed previews and user‑specific pagination sessions keep browsing tidy and secure.</p>
+                    <ul class="skills-list">
+                        <li class="skill-tag">Python</li>
+                        <li class="skill-tag">discord.py</li>
+                        <li class="skill-tag">BeautifulSoup</li>
+                        <li class="skill-tag">Requests</li>
+                        <li class="skill-tag">python-dotenv</li>
+                        <li class="skill-tag">JSON Storage</li>
+                    </ul>
+                </div>
+                <!-- NEW: PromptSense -->
+                <div class="timeline-item">
+                    <h3><a href="https://promptsense.streamlit.app" target="_blank" rel="noopener noreferrer" class="item-link">PromptSense — Smart Prompt Engineering Tool</a></h3>
+                    <p class="description">Turn vague thoughts into high‑quality prompts for Gemini Pro, ChatGPT, Claude, and more. Includes a Prompt Builder, persona & mode presets, and an advanced techniques page powered by curated best practices. Polished Streamlit UI with custom branding; API‑ready via a Gemini client.</p>
+                    <ul class="skills-list">
+                        <li class="skill-tag">Python</li>
+                        <li class="skill-tag">Streamlit</li>
+                        <li class="skill-tag">Gemini API</li>
+                        <li class="skill-tag">Prompt Engineering</li>
+                        <li class="skill-tag">REST</li>
+                    </ul>
+                </div>
+
+                <!-- Existing projects -->
                 <div class="timeline-item">
                     <h3><a href="https://github.com/YeswanthC7" target="_blank" rel="noopener noreferrer" class="item-link">LLM-Driven QA Test Authoring</a></h3>
                     <p class="description">Prototyping a pipeline that turns user-story markdown into Playwright tests via cloud-LLM prompts and AST validation, targeting a 60% reduction in manual coding time. The CI pipeline regenerates tests, runs them across multiple browsers, and establishes dependable quality gates.</p>
@@ -471,10 +303,10 @@
                         <li class="skill-tag">Playwright</li><li class="skill-tag">Selenium WebDriver</li><li class="skill-tag">TestNG</li><li class="skill-tag">JUnit</li><li class="skill-tag">Cucumber (BDD)</li><li class="skill-tag">Appium</li><li class="skill-tag">API Testing</li><li class="skill-tag">Performance Testing</li><li class="skill-tag">Security Testing</li><li class="skill-tag">QA Methodologies</li>
                     </ul>
                 </div>
-                 <div class="skills-category">
+                <div class="skills-category">
                     <h4>Miscellaneous</h4>
                     <ul class="skills-list">
-                        <li class="skill-tag">KNIME</li><li class="skill-tag">Tableau</li><li class="skill-tag">Power BI</li><li class="skill-tag">Git</li><li class="skill-tag">Data Structures</li><li class="skill-tag">Predictive Analytics</li><li class="skill-tag">Prompt Engineering</li><li class="skill-tag">Matter Protocol</li>
+                        <li class="skill-tag">discord.py</li><li class="skill-tag">BeautifulSoup</li><li class="skill-tag">Streamlit</li><li class="skill-tag">Gemini API</li><li class="skill-tag">KNIME</li><li class="skill-tag">Tableau</li><li class="skill-tag">Power BI</li><li class="skill-tag">Git</li><li class="skill-tag">Data Structures</li><li class="skill-tag">Predictive Analytics</li><li class="skill-tag">Prompt Engineering</li><li class="skill-tag">Matter Protocol</li>
                     </ul>
                 </div>
             </div>
@@ -531,10 +363,7 @@
     <script>
         const menuToggle = document.getElementById('menu-toggle');
         const mainMenu = document.getElementById('main-menu');
-
-        menuToggle.addEventListener('click', () => {
-            mainMenu.classList.toggle('active');
-        });
+        menuToggle.addEventListener('click', () => { mainMenu.classList.toggle('active'); });
     </script>
 </body>
 </html>
