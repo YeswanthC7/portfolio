@@ -1,369 +1,292 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Yeswanth Chandrasekhar | Portfolio</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --primary-blue: #1B5E8F;
-            --light-text: #f8f9fa;
-            --medium-text: #adb5bd;
-            --dark-text: #0f172a;
-            --accent-light: #e0f2fe;
-            --accent-dark: #0ea5e9;
-            --button-bg: #0ea5e9;
-            --button-hover-bg: #0284c7;
-        }
-
-        body {
-            margin: 0;
-            font-family: 'Inter', sans-serif;
-            background-color: var(--primary-blue);
-            color: var(--light-text);
-            line-height: 1.6;
-            scroll-behavior: smooth;
-        }
-
-        .container {
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 0 2rem;
-        }
-
-        /* --- Header & Navigation --- */
-        .main-header {
-            padding: 1.5rem 0;
-            position: sticky;
-            top: 0;
-            background-color: rgba(27, 94, 143, 0.85);
-            z-index: 100;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(5px);
-        }
-
-        .main-header .container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--light-text);
-            text-decoration: none;
-        }
-
-        .main-nav {
-            display: none;
-        }
-        .main-nav.active { display: block; position: absolute; top: 100%; left: 0; width: 100%; background-color: var(--primary-blue); padding: 1rem 0; border-bottom: 1px solid rgba(255, 255, 255, 0.1); }
-        .main-nav ul { margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; align-items: center; width: 100%; }
-        .main-nav li { width: 100%; text-align: center; }
-        .main-nav a { color: var(--medium-text); text-decoration: none; padding: 1rem; display: block; transition: color 0.3s ease, background-color 0.3s ease; font-weight: 500; }
-        .main-nav a:hover, .main-nav a.active-link { color: var(--light-text); background-color: rgba(255, 255, 255, 0.05); }
-        .nav-socials { display: none; }
-
-        .mobile-menu-button { display: block; background: none; border: none; cursor: pointer; padding: 0; }
-        .mobile-menu-button svg { stroke: var(--light-text); }
-
-        /* --- Hero Section --- */
-        .hero { padding: 6rem 0 0 0; text-align: left; }
-        .hero-text h1 { font-size: 3.2rem; margin: 0 0 1.5rem 0; line-height: 1.2; max-width: 800px; }
-        .hero-text p { font-size: 1.2rem; color: var(--medium-text); max-width: 700px; }
-        .hero-divider { border: 0; height: 1px; background: rgba(255, 255, 255, 0.1); margin: 4rem 0 2rem 0; }
-
-        /* --- Main Content Sections --- */
-        main { padding-bottom: 5rem; }
-        .content-section { padding: 3rem 0; border-bottom: 1px solid rgba(255, 255, 255, 0.1); }
-        .content-section:last-child { border-bottom: none; }
-        .section-grid { display: grid; grid-template-columns: 1fr; gap: 2rem; }
-        .section-title { font-size: 1.1rem; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; color: var(--medium-text); margin-bottom: 1rem; }
-        .section-content p { margin-top: 0; }
-        .timeline-item { margin-bottom: 3rem; }
-        .timeline-item:last-child { margin-bottom: 0; }
-        .timeline-item h3 { margin: 0; font-size: 1.25rem; font-weight: 600; }
-        .timeline-item h3 .company { color: var(--accent-dark); }
-        .timeline-item .date { font-size: 0.9rem; color: var(--medium-text); margin-bottom: 0.5rem; display: block; }
-        .timeline-item .description { font-size: 1rem; color: var(--medium-text); }
-
-        /* Skills */
-        .skills-category { margin-bottom: 2.5rem; }
-        .skills-category:last-child { margin-bottom: 0; }
-        .skills-category h4 { margin: 0 0 1rem 0; font-size: 1.1rem; font-weight: 600; }
-        .skills-list { display: flex; flex-wrap: wrap; gap: 0.75rem; padding: 0; margin: 0; list-style: none; }
-        .skill-tag { background-color: var(--accent-light); color: var(--dark-text); padding: 0.3rem 0.8rem; border-radius: 9999px; font-size: 0.9rem; font-weight: 500; }
-
-        /* Project & Cert Links */
-        .item-link { display: inline-block; text-decoration: none; color: var(--light-text); transition: color 0.3s ease; }
-        .item-link:hover { color: var(--accent-dark); }
-
-        /* Contact & Resume Button */
-        .contact-details p { margin: 0 0 1rem 0; font-size: 1.1rem; }
-        .contact-details a { color: var(--light-text); text-decoration: none; transition: color 0.3s ease; }
-        .contact-details a:hover { color: var(--accent-dark); }
-        .resume-button { display: inline-block; background-color: var(--button-bg); color: var(--light-text); padding: 0.8rem 1.5rem; border-radius: 8px; text-decoration: none; font-weight: 600; margin-top: 1.5rem; transition: background-color 0.3s ease; }
-        .resume-button:hover { background-color: var(--button-hover-bg); }
-
-        /* Footer */
-        .main-footer { text-align: center; padding: 3rem 0 2rem 0; color: var(--medium-text); font-size: 0.9rem; }
-
-        /* --- Desktop Styles --- */
-        @media (min-width: 768px) {
-            .mobile-menu-button { display: none; }
-            .main-nav { display: block; position: static; width: auto; background-color: transparent; padding: 0; border: none; }
-            .main-nav ul { flex-direction: row; align-items: center; }
-            .main-nav li { width: auto; }
-            .main-nav a { padding: 0.5rem 1rem; display: inline-block; }
-            .nav-socials { display: flex; align-items: center; margin-left: 1rem; }
-            .nav-socials a { margin-left: 1rem; }
-            .section-grid { grid-template-columns: 1fr 3fr; gap: 3rem; }
-            .section-title { margin-bottom: 0; }
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Yeswanth Chandrasekhar | Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --primary-blue:#1B5E8F;--light-text:#f8f9fa;--medium-text:#adb5bd;--dark-text:#0f172a;
+      --accent-light:#e0f2fe;--accent-dark:#0ea5e9;--button-bg:#0ea5e9;--button-hover-bg:#0284c7
+    }
+    body{margin:0;font-family:'Inter',sans-serif;background-color:var(--primary-blue);color:var(--light-text);line-height:1.6;scroll-behavior:smooth}
+    .container{max-width:1100px;margin:0 auto;padding:0 2rem}
+    .main-header{padding:1.5rem 0;position:sticky;top:0;background-color:rgba(27,94,143,.85);z-index:100;border-bottom:1px solid rgba(255,255,255,.1);backdrop-filter:blur(5px)}
+    .main-header .container{display:flex;justify-content:space-between;align-items:center}
+    .logo{font-size:1.5rem;font-weight:700;color:var(--light-text);text-decoration:none}
+    .main-nav{display:none}
+    .main-nav.active{display:block;position:absolute;top:100%;left:0;width:100%;background-color:var(--primary-blue);padding:1rem 0;border-bottom:1px solid rgba(255,255,255,.1)}
+    .main-nav ul{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;align-items:center;width:100%}
+    .main-nav li{width:100%;text-align:center}
+    .main-nav a{color:var(--medium-text);text-decoration:none;padding:1rem;display:block;transition:color .3s ease,background-color .3s ease;font-weight:500}
+    .main-nav a:hover,.main-nav a.active-link{color:var(--light-text);background-color:rgba(255,255,255,.05)}
+    .nav-socials{display:none}
+    .mobile-menu-button{display:block;background:none;border:none;cursor:pointer;padding:0}
+    .mobile-menu-button svg{stroke:var(--light-text)}
+    .hero{padding:6rem 0 0 0;text-align:left}
+    .hero-text h1{font-size:3.2rem;margin:0 0 1.5rem 0;line-height:1.2;max-width:800px}
+    .hero-text p{font-size:1.2rem;color:var(--medium-text);max-width:700px}
+    .hero-divider{border:0;height:1px;background:rgba(255,255,255,.1);margin:4rem 0 2rem 0}
+    main{padding-bottom:5rem}
+    .content-section{padding:3rem 0;border-bottom:1px solid rgba(255,255,255,.1)}
+    .content-section:last-child{border-bottom:none}
+    .section-grid{display:grid;grid-template-columns:1fr;gap:2rem}
+    .section-title{font-size:1.1rem;font-weight:600;text-transform:uppercase;letter-spacing:1px;color:var(--medium-text);margin-bottom:1rem}
+    .timeline-item{margin-bottom:3rem}
+    .timeline-item:last-child{margin-bottom:0}
+    .timeline-item h3{margin:0;font-size:1.25rem;font-weight:600}
+    .timeline-item h3 .company{color:var(--accent-dark)}
+    .timeline-item .date{font-size:.9rem;color:var(--medium-text);margin-bottom:.5rem;display:block}
+    .timeline-item .description{font-size:1rem;color:var(--medium-text)}
+    .skills-category{margin-bottom:2.5rem}
+    .skills-list{display:flex;flex-wrap:wrap;gap:.75rem;padding:0;margin:0;list-style:none}
+    .skill-tag{background-color:var(--accent-light);color:var(--dark-text);padding:.3rem .8rem;border-radius:9999px;font-size:.9rem;font-weight:500}
+    .item-link{display:inline-block;text-decoration:none;color:var(--light-text);transition:color .3s ease}
+    .item-link:hover{color:var(--accent-dark)}
+    .contact-details p{margin:0 0 1rem 0;font-size:1.1rem}
+    .contact-details a{color:var(--light-text);text-decoration:none;transition:color .3s ease}
+    .contact-details a:hover{color:var(--accent-dark)}
+    .resume-button{display:inline-block;background-color:var(--button-bg);color:var(--light-text);padding:.8rem 1.5rem;border-radius:8px;text-decoration:none;font-weight:600;margin-top:1.5rem;transition:background-color .3s ease}
+    .resume-button:hover{background-color:var(--button-hover-bg)}
+    .main-footer{text-align:center;padding:3rem 0 2rem 0;color:var(--medium-text);font-size:.9rem}
+    @media(min-width:768px){
+      .mobile-menu-button{display:none}
+      .main-nav{display:block;position:static;width:auto;background:transparent;padding:0;border:none}
+      .main-nav ul{flex-direction:row;align-items:center}
+      .main-nav li{width:auto}
+      .main-nav a{padding:.5rem 1rem;display:inline-block}
+      .nav-socials{display:flex;align-items:center;margin-left:1rem}
+      .nav-socials a{margin-left:1rem}
+      .section-grid{grid-template-columns:1fr 3fr;gap:3rem}
+      .section-title{margin-bottom:0}
+    }
+  </style>
 </head>
 <body>
 
-    <header class="main-header">
-        <div class="container">
-            <a href="#" class="logo">Yeswanth Chandrasekhar</a>
-            <button class="mobile-menu-button" id="menu-toggle">
-                 <svg width="24" height="24" fill="none" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"></path></svg>
-            </button>
-            <nav class="main-nav" id="main-menu">
-                <ul>
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#experience">Experience</a></li>
-                    <li><a href="#projects">Projects</a></li>
-                    <li><a href="#skills">Skills</a></li>
-                    <li><a href="#certifications">Certifications</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                    <li class="nav-socials">
-                        <a href="https://github.com/YeswanthC7" target="_blank" rel="noopener noreferrer" title="GitHub">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path fill-rule="evenodd" d="M12 2C6.477 2 2 6.477 2 12c0 4.419 2.865 8.166 6.839 9.489.5.09.682-.218.682-.484 0-.238-.009-.868-.014-1.703-2.782.604-3.369-1.342-3.369-1.342-.454-1.157-1.11-1.465-1.11-1.465-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.089 2.91.832.092-.647.35-1.089.636-1.339-2.22-.252-4.555-1.112-4.555-4.943 0-1.091.39-1.984 1.03-2.682-.103-.253-.446-1.27.098-2.645 0 0 .84-.269 2.75 1.025A9.549 9.549 0 0 1 12 6.836c.85.004 1.705.114 2.504.336 1.909-1.294 2.747-1.025 2.747-1.025.546 1.375.201 2.392.1 2.645.64.698 1.026 1.59 1.026 2.682 0 3.841-2.339 4.689-4.566 4.932.359.308.678.92.678 1.852 0 1.336-.012 2.414-.012 2.742 0 .268.18.578.688.48A10.001 10.001 0 0 0 22 12c0-5.523-4.477-10-10-10Z" clip-rule="evenodd"/></svg>
-                        </a>
-                        <a href="https://linkedin.com/in/yeswanth-c" target="_blank" rel="noopener noreferrer" title="LinkedIn">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14Zm-8 6H8v7h3v-7Zm-1.5-2.25a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3ZM16 11h-2v1.5c0 .83-.02 1.88-1.12 1.88C11.76 14.38 11 13.5 11 12V9h-3v7h3v-3.5c0-.88.16-1.75 1.25-1.75s1.09.81 1.09 1.75V16h3v-5Z" clip-rule="evenodd"/></svg>
-                        </a>
-                    </li>
-                </ul>
-            </nav>
-        </div>
-    </header>
+<header class="main-header">
+  <div class="container">
+    <a href="#" class="logo">Yeswanth Chandrasekhar</a>
+    <button class="mobile-menu-button" id="menu-toggle">
+      <svg width="24" height="24" fill="none" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/></svg>
+    </button>
+    <nav class="main-nav" id="main-menu">
+      <ul>
+        <li><a href="#about">About</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#certifications">Certifications</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li class="nav-socials">
+          <a href="https://github.com/YeswanthC7" target="_blank" rel="noopener noreferrer" title="GitHub">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path fill-rule="evenodd" d="M12 2C6.477 2 2 6.477 2 12c0 4.419 2.865 8.166 6.839 9.489.5.09.682-.218.682-.484 0-.238-.009-.868-.014-1.703-2.782.604-3.369-1.342-3.369-1.342-.454-1.157-1.11-1.465-1.11-1.465-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.089 2.91.832.092-.647.35-1.089.636-1.339-2.22-.252-4.555-1.112-4.555-4.943 0-1.091.39-1.984 1.03-2.682-.103-.253-.446-1.27.098-2.645 0 0 .84-.269 2.75 1.025A9.549 9.549 0 0 1 12 6.836c.85.004 1.705.114 2.504.336 1.909-1.294 2.747-1.025 2.747-1.025.546 1.375.201 2.392.1 2.645.64.698 1.026 1.59 1.026 2.682 0 3.841-2.339 4.689-4.566 4.932.359.308.678.92.678 1.852 0 1.336-.012 2.414-.012 2.742 0 .268.18.578.688.48A10.001 10.001 0 0 0 22 12c0-5.523-4.477-10-10-10Z"/></svg>
+          </a>
+          <a href="https://linkedin.com/in/yeswanth-c" target="_blank" rel="noopener noreferrer" title="LinkedIn">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14Zm-8 6H8v7h3v-7Zm-1.5-2.25a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3ZM16 11h-2v1.5c0 .83-.02 1.88-1.12 1.88C11.76 14.38 11 13.5 11 12V9h-3v7h3v-3.5c0-.88.16-1.75 1.25-1.75s1.09.81 1.09 1.75V16h3v-5Z"/></svg>
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</header>
 
-    <main class="container">
+<main class="container">
+  <!-- HERO updated to match resume -->
+  <section class="hero">
+    <div class="hero-text">
+      <h1>Software Engineer — Backend, Automation & Cloud</h1>
+      <p>2.5+ years building scalable APIs, distributed systems, and CI/CD pipelines. Proficient in Java, Python, Spring Boot, React, SQL, AWS, Docker, and Kubernetes. Experience across funding/reporting platforms, AI-driven automation, and cloud-native apps; focused on reliability, performance, and impact in Agile teams.</p>
+    </div>
+    <hr class="hero-divider">
+  </section>
 
-        <section class="hero">
-            <div class="hero-text">
-                <h1>Crafting Resilient Infrastructure & Intelligent Automation</h1>
-                <p>A DevOps and Backend Engineer translating complex problems into scalable, high-performance digital solutions.</p>
-            </div>
-            <hr class="hero-divider">
-        </section>
+  <div id="about" class="content-section section-grid">
+    <h2 class="section-title">About</h2>
+    <div class="section-content">
+      <p>I design reliable software and automation that scale. Recent work includes secure REST services, distributed test automation, and React dashboards for reporting workflows. I enjoy performance tuning, clear systems design, and partnering with cross-functional teams to deliver measurable business value.</p>
+    </div>
+  </div>
 
-        <div id="about" class="content-section section-grid">
-            <h2 class="section-title">About</h2>
-            <div class="section-content">
-                <p>With a Master's in Business Analytics & AI and a strong foundation in computer science, I bridge the gap between development and operations. I specialize in building robust CI/CD pipelines, containerizing applications for maximum efficiency, and leveraging automation to enhance software quality. My experience ranges from backend API testing to prototyping innovative, AI-driven QA solutions, always with a focus on creating stable, scalable, and maintainable systems.</p>
-            </div>
-        </div>
+  <!-- EXPERIENCE -->
+  <div id="experience" class="content-section section-grid">
+    <h2 class="section-title">Experience</h2>
+    <div class="section-content">
+      <!-- New role -->
+      <div class="timeline-item">
+        <h3>Software Developer at <span class="company">Community Dreams Foundation, Orlando, Florida</span></h3>
+        <span class="date">August 2025 – Present</span>
+        <ul class="description">
+          <li>Contributing to Java backend services for funding and reporting systems; implementing secure APIs for financial workflows serving community programs and partners.</li>
+          <li>Assisting in React.js front-end development, building dashboards to track funding allocations and generate financial reports.</li>
+          <li>Collaborating in Agile sprints with senior engineers to debug features, integrate front-end and backend components, and deliver incremental releases.</li>
+        </ul>
+      </div>
 
-        <div id="experience" class="content-section section-grid">
-            <h2 class="section-title">Experience</h2>
-            <div class="section-content">
-                <div class="timeline-item">
-                    <h3>Software QA Engineer at <span class="company">Synchronoss Technologies</span></h3>
-                    <span class="date">July 2022 – July 2023</span>
-                    <p class="description">Led backend automation testing for Verizon Cloud application APIs using Maven, TestNG, and Shell scripting, improving release cycle stability. Containerized the automation test suite using Docker to reduce environment-related failures. Collaborated with the Machine Learning team on testing analytics-driven features, contributing to data refinement processes that improved feature performance and boosted model result accuracy by 15%.</p>
-                </div>
-                <div class="timeline-item">
-                    <h3>Cloud QA & DevOps Intern at <span class="company">TCR Innovation</span></h3>
-                    <span class="date">January 2021 – July 2022</span>
-                    <p class="description">Authored Java/TestNG scripts in LocalStack to automate smoke tests for Lambda and API Gateway. Assisted in designing Terraform modules to provision temporary QA environments and enhanced a Node.js ingestion service by incorporating CloudWatch metrics and resolving bugs. Monitored Lambdas with Datadog APM to flag and address a memory spike.</p>
-                </div>
-                <div class="timeline-item">
-                    <h3>Machine Learning Intern at <span class="company">Verzeo</span></h3>
-                    <span class="date">August 2021 – Dec 2021</span>
-                    <p class="description">Cleaned and prepared 50k customer reviews with Python, boosting model F1 score by 15%. Built a collaborative filtering recommender that increased click-through rates by 20% and developed an LSTM sentiment classifier (88% accuracy), deployed via a Flask REST API. Automated weekly data refresh and model retraining using cron jobs and Bash scripts.</p>
-                </div>
-                <div class="timeline-item">
-                    <h3>Web Development Intern at <span class="company">Lets Grow More</span></h3>
-                    <span class="date">October 2021 – November 2021</span>
-                    <p class="description">Developed a responsive single-page website using HTML, CSS, and JavaScript. Built a React.js web app that fetched and displayed live data from a public API, implementing asynchronous calls and error handling. Deployed projects on GitHub Pages, maintaining clean, version-controlled repositories.</p>
-                </div>
-            </div>
-        </div>
-        
-        <div id="education" class="content-section section-grid">
-            <h2 class="section-title">Education</h2>
-            <div class="section-content">
-                <div class="timeline-item">
-                    <h3>University of Texas at Dallas</h3>
-                    <span class="date">May 2025</span>
-                    <p class="description">Master of Science in Business Analytics and Artificial Intelligence</p>
-                </div>
-                <div class="timeline-item">
-                    <h3>BMS Institute of Technology and Management</h3>
-                    <span class="date">July 2022</span>
-                    <p class="description">Bachelor of Technology in Computer Science and Engineering</p>
-                </div>
-            </div>
-        </div>
+      <div class="timeline-item">
+        <h3>Software QA Engineer at <span class="company">Synchronoss Technologies</span></h3>
+        <span class="date">July 2022 – July 2023</span>
+        <p class="description">Led backend automation testing for Verizon Cloud application APIs using Maven, TestNG, and Shell scripting, improving release cycle stability. Containerized the automation test suite using Docker to reduce environment-related failures. Collaborated with the Machine Learning team on analytics-driven features, improving model result accuracy by 15%.</p>
+      </div>
 
-        <div id="projects" class="content-section section-grid">
-            <h2 class="section-title">Projects</h2>
-            <div class="section-content">
-                <!-- NEW: WishlistBot -->
-                <div class="timeline-item">
-                    <h3>WishlistBot — Discord Wishlist Manager</h3>
-                    <p class="description">A Discord bot that lets users drop any product link (Amazon, Puma, Nike, or any site) and automatically scrapes the title and price into a persistent, user‑scoped wishlist. Supports quick <code>!wishlist</code> to view the latest 5 items and <code>!wishlist all</code> for full pagination with ⏮️/⏭️ reactions. Clean embed previews and user‑specific pagination sessions keep browsing tidy and secure.</p>
-                    <ul class="skills-list">
-                        <li class="skill-tag">Python</li>
-                        <li class="skill-tag">discord.py</li>
-                        <li class="skill-tag">BeautifulSoup</li>
-                        <li class="skill-tag">Requests</li>
-                        <li class="skill-tag">python-dotenv</li>
-                        <li class="skill-tag">JSON Storage</li>
-                    </ul>
-                </div>
-                <!-- NEW: PromptSense -->
-                <div class="timeline-item">
-                    <h3><a href="https://promptsense.streamlit.app" target="_blank" rel="noopener noreferrer" class="item-link">PromptSense — Smart Prompt Engineering Tool</a></h3>
-                    <p class="description">Turn vague thoughts into high‑quality prompts for Gemini Pro, ChatGPT, Claude, and more. Includes a Prompt Builder, persona & mode presets, and an advanced techniques page powered by curated best practices. Polished Streamlit UI with custom branding; API‑ready via a Gemini client.</p>
-                    <ul class="skills-list">
-                        <li class="skill-tag">Python</li>
-                        <li class="skill-tag">Streamlit</li>
-                        <li class="skill-tag">Gemini API</li>
-                        <li class="skill-tag">Prompt Engineering</li>
-                        <li class="skill-tag">REST</li>
-                    </ul>
-                </div>
+      <div class="timeline-item">
+        <h3>Cloud QA & DevOps Intern at <span class="company">TCR Innovation</span></h3>
+        <span class="date">January 2021 – July 2022</span>
+        <p class="description">Authored Java/TestNG scripts in LocalStack for Lambda and API Gateway smoke tests. Helped design Terraform modules for temporary QA environments and enhanced a Node.js ingestion service with CloudWatch metrics. Monitored Lambdas with Datadog APM to flag memory spikes.</p>
+      </div>
 
-                <!-- Existing projects -->
-                <div class="timeline-item">
-                    <h3><a href="https://github.com/YeswanthC7" target="_blank" rel="noopener noreferrer" class="item-link">LLM-Driven QA Test Authoring</a></h3>
-                    <p class="description">Prototyping a pipeline that turns user-story markdown into Playwright tests via cloud-LLM prompts and AST validation, targeting a 60% reduction in manual coding time. The CI pipeline regenerates tests, runs them across multiple browsers, and establishes dependable quality gates.</p>
-                    <ul class="skills-list">
-                        <li class="skill-tag">Python</li>
-                        <li class="skill-tag">Playwright</li>
-                        <li class="skill-tag">PyTest</li>
-                        <li class="skill-tag">GitHub Actions</li>
-                    </ul>
-                </div>
-                <div class="timeline-item">
-                    <h3><a href="https://github.com/YeswanthC7" target="_blank" rel="noopener noreferrer" class="item-link">Vehicle Ranking System (Capstone)</a></h3>
-                    <p class="description">Designed and deployed a Smart Weighted Vehicle Ranking System on 8k used-car listings. The end-to-end pipeline cleans data, scores cars in real time, and allows users to set weights. Integrated SHAP explainers and outlier detection to flag overpriced listings and build user trust.</p>
-                    <ul class="skills-list">
-                        <li class="skill-tag">Python</li>
-                        <li class="skill-tag">Random Forest</li>
-                        <li class="skill-tag">Streamlit</li>
-                    </ul>
-                </div>
-                <div class="timeline-item">
-                    <h3><a href="https://github.com/YeswanthC7" target="_blank" rel="noopener noreferrer" class="item-link">Traffic Sign Recognition</a></h3>
-                    <p class="description">Built a full preprocessing and augmentation pipeline for the German Traffic Sign dataset (~44k images, 43 classes). Trained multiple models and selected Random Forest (90% test accuracy, 0.90 validation) to classify signs, demonstrating robustness for driver-assistance systems.</p>
-                    <ul class="skills-list">
-                        <li class="skill-tag">Python</li>
-                        <li class="skill-tag">Random Forest</li>
-                        <li class="skill-tag">OpenCV</li>
-                        <li class="skill-tag">Applied ML</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
+      <div class="timeline-item">
+        <h3>Machine Learning Intern at <span class="company">Verzeo</span></h3>
+        <span class="date">August 2021 – Dec 2021</span>
+        <p class="description">Prepared 50k reviews in Python, boosting F1 by 15%. Built a collaborative filtering recommender (+20% CTR) and an LSTM sentiment classifier (88% accuracy), deployed with Flask; automated weekly refresh & retraining via cron.</p>
+      </div>
 
-        <div id="skills" class="content-section section-grid">
-            <h2 class="section-title">Skills</h2>
-            <div class="section-content">
-                <div class="skills-category">
-                    <h4>Programming & Databases</h4>
-                    <ul class="skills-list">
-                        <li class="skill-tag">Go</li><li class="skill-tag">Java</li><li class="skill-tag">TypeScript</li><li class="skill-tag">JavaScript</li><li class="skill-tag">Python</li><li class="skill-tag">SQL</li><li class="skill-tag">MongoDB</li><li class="skill-tag">MySQL</li><li class="skill-tag">C</li><li class="skill-tag">Kotlin</li><li class="skill-tag">R</li>
-                    </ul>
-                </div>
-                <div class="skills-category">
-                    <h4>Frameworks & Interfaces</h4>
-                    <ul class="skills-list">
-                        <li class="skill-tag">Spring Boot</li><li class="skill-tag">Django</li><li class="skill-tag">Streamlit</li><li class="skill-tag">PySpark</li>
-                    </ul>
-                </div>
-                <div class="skills-category">
-                    <h4>Cloud & DevOps</h4>
-                    <ul class="skills-list">
-                        <li class="skill-tag">AWS (Lambda, ECS)</li><li class="skill-tag">Azure</li><li class="skill-tag">Docker</li><li class="skill-tag">Kubernetes</li><li class="skill-tag">Ansible</li><li class="skill-tag">CI/CD (Bamboo)</li><li class="skill-tag">GitHub Actions</li><li class="skill-tag">Datadog</li>
-                    </ul>
-                </div>
-                <div class="skills-category">
-                    <h4>Testing & QA</h4>
-                    <ul class="skills-list">
-                        <li class="skill-tag">Playwright</li><li class="skill-tag">Selenium WebDriver</li><li class="skill-tag">TestNG</li><li class="skill-tag">JUnit</li><li class="skill-tag">Cucumber (BDD)</li><li class="skill-tag">Appium</li><li class="skill-tag">API Testing</li><li class="skill-tag">Performance Testing</li><li class="skill-tag">Security Testing</li><li class="skill-tag">QA Methodologies</li>
-                    </ul>
-                </div>
-                <div class="skills-category">
-                    <h4>Miscellaneous</h4>
-                    <ul class="skills-list">
-                        <li class="skill-tag">discord.py</li><li class="skill-tag">BeautifulSoup</li><li class="skill-tag">Streamlit</li><li class="skill-tag">Gemini API</li><li class="skill-tag">KNIME</li><li class="skill-tag">Tableau</li><li class="skill-tag">Power BI</li><li class="skill-tag">Git</li><li class="skill-tag">Data Structures</li><li class="skill-tag">Predictive Analytics</li><li class="skill-tag">Prompt Engineering</li><li class="skill-tag">Matter Protocol</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
+      <div class="timeline-item">
+        <h3>Web Development Intern at <span class="company">Lets Grow More</span></h3>
+        <span class="date">October 2021 – November 2021</span>
+        <p class="description">Built responsive SPAs in HTML/CSS/JS; created a React app to fetch/display live API data with robust error handling. Deployed on GitHub Pages.</p>
+      </div>
+    </div>
+  </div>
 
-        <div id="certifications" class="content-section section-grid">
-            <h2 class="section-title">Certifications</h2>
-            <div class="section-content">
-                 <div class="timeline-item">
-                    <h3><a href="#" class="item-link">Classify Images with TensorFlow on Google Cloud</a></h3>
-                    <span class="date">Google</span>
-                </div>
-                <div class="timeline-item">
-                    <h3><a href="#" class="item-link">Machine Learning Operations (MLOps) for Generative AI</a></h3>
-                    <span class="date">Google Cloud</span>
-                </div>
-                <div class="timeline-item">
-                    <h3><a href="#" class="item-link">Academy Accreditation - Generative AI Fundamentals</a></h3>
-                    <span class="date">Databricks</span>
-                </div>
-                <div class="timeline-item">
-                    <h3><a href="#" class="item-link">Academy Accreditation - Databricks Fundamentals</a></h3>
-                    <span class="date">Databricks</span>
-                </div>
-                 <div class="timeline-item">
-                    <h3><a href="#" class="item-link">Data Science Tools</a></h3>
-                    <span class="date">IBM</span>
-                </div>
-                 <div class="timeline-item">
-                    <h3><a href="#" class="item-link">Machine Learning</a></h3>
-                    <span class="date">Duke University | Coursera</span>
-                </div>
-            </div>
-        </div>
-        
-        <div id="contact" class="content-section section-grid">
-            <h2 class="section-title">Contact</h2>
-            <div class="section-content">
-                <div class="contact-details">
-                    <p>Feel free to reach out. I'm always open to discussing new projects, creative ideas, or opportunities to be part of an ambitious team.</p>
-                    <p><strong>Email:</strong> <a href="mailto:yeswanthchandrasekhar7@gmail.com">yeswanthchandrasekhar7@gmail.com</a></p>
-                    <p><strong>Phone:</strong> +1 737-497-2105</p>
-                    <a href="./Yeswanth_Resume_2025.pdf" download="Yeswanth-Chandrasekhar-Resume.pdf" class="resume-button">Download Resume</a>
-                </div>
-            </div>
-        </div>
+  <!-- EDUCATION -->
+  <div id="education" class="content-section section-grid">
+    <h2 class="section-title">Education</h2>
+    <div class="section-content">
+      <div class="timeline-item">
+        <h3>University of Texas at Dallas</h3>
+        <span class="date">May 2025</span>
+        <p class="description">Master of Science in Business Analytics and Artificial Intelligence</p>
+      </div>
+      <div class="timeline-item">
+        <h3>BMS Institute of Technology and Management</h3>
+        <span class="date">July 2022</span>
+        <p class="description">Bachelor of Technology in Computer Science and Engineering</p>
+      </div>
+    </div>
+  </div>
 
-    </main>
+  <!-- PROJECTS (kept as you had) -->
+  <div id="projects" class="content-section section-grid">
+    <h2 class="section-title">Projects</h2>
+    <div class="section-content">
+      <div class="timeline-item">
+        <h3>WishlistBot — Discord Wishlist Manager</h3>
+        <p class="description">Discord bot that scrapes title/price from any product URL and stores user-scoped wishlists. <code>!wishlist</code> shows latest 5; <code>!wishlist all</code> paginates with ⏮️/⏭️ reactions. Clean embeds; per-user pagination sessions.</p>
+        <ul class="skills-list">
+          <li class="skill-tag">Python</li><li class="skill-tag">discord.py</li><li class="skill-tag">BeautifulSoup</li><li class="skill-tag">Requests</li><li class="skill-tag">python-dotenv</li><li class="skill-tag">JSON Storage</li>
+        </ul>
+      </div>
+      <div class="timeline-item">
+        <h3><a href="https://promptsense.streamlit.app" target="_blank" rel="noopener noreferrer" class="item-link">PromptSense — Smart Prompt Engineering Tool</a></h3>
+        <p class="description">Transforms rough ideas into polished prompts for Gemini, ChatGPT, Claude. Persona & mode presets; advanced techniques page; custom-styled Streamlit UI; API-ready via Gemini client.</p>
+        <ul class="skills-list">
+          <li class="skill-tag">Python</li><li class="skill-tag">Streamlit</li><li class="skill-tag">Gemini API</li><li class="skill-tag">Prompt Engineering</li><li class="skill-tag">REST</li>
+        </ul>
+      </div>
+      <div class="timeline-item">
+        <h3><a href="https://github.com/YeswanthC7" target="_blank" rel="noopener noreferrer" class="item-link">LLM-Driven QA Test Authoring</a></h3>
+        <p class="description">Pipeline that converts user-stories into Playwright tests via LLM prompts + AST validation; targets 60% less manual coding. CI runs cross-browser and enforces quality gates.</p>
+        <ul class="skills-list">
+          <li class="skill-tag">Python</li><li class="skill-tag">Playwright</li><li class="skill-tag">PyTest</li><li class="skill-tag">GitHub Actions</li>
+        </ul>
+      </div>
+      <div class="timeline-item">
+        <h3><a href="https://github.com/YeswanthC7" target="_blank" rel="noopener noreferrer" class="item-link">Vehicle Ranking System (Capstone)</a></h3>
+        <p class="description">Weighted ranking on 8k used-car listings; real-time scoring with SHAP explainers & outlier detection to flag overpriced listings.</p>
+        <ul class="skills-list">
+          <li class="skill-tag">Python</li><li class="skill-tag">Random Forest</li><li class="skill-tag">Streamlit</li>
+        </ul>
+      </div>
+      <div class="timeline-item">
+        <h3><a href="https://github.com/YeswanthC7" target="_blank" rel="noopener noreferrer" class="item-link">Traffic Sign Recognition</a></h3>
+        <p class="description">Pipeline for GTSRB (~44k images, 43 classes). Random Forest reached 90% test accuracy.</p>
+        <ul class="skills-list">
+          <li class="skill-tag">Python</li><li class="skill-tag">Random Forest</li><li class="skill-tag">OpenCV</li><li class="skill-tag">Applied ML</li>
+        </ul>
+      </div>
+    </div>
+  </div>
 
-    <footer class="main-footer">
-        <p>&copy; 2024 Yeswanth Chandrasekhar. Built with a sprinkle of masala.</p>
-    </footer>
+  <!-- SKILLS aligned to resume -->
+  <div id="skills" class="content-section section-grid">
+    <h2 class="section-title">Skills</h2>
+    <div class="section-content">
+      <div class="skills-category">
+        <h4>Programming & Databases</h4>
+        <ul class="skills-list">
+          <li class="skill-tag">Java</li><li class="skill-tag">Python</li><li class="skill-tag">JavaScript</li><li class="skill-tag">TypeScript</li><li class="skill-tag">SQL</li>
+          <li class="skill-tag">PostgreSQL</li><li class="skill-tag">MongoDB</li><li class="skill-tag">MariaDB</li>
+        </ul>
+      </div>
+      <div class="skills-category">
+        <h4>Frameworks & Libraries</h4>
+        <ul class="skills-list">
+          <li class="skill-tag">Spring Boot</li><li class="skill-tag">React.js</li><li class="skill-tag">Node.js</li><li class="skill-tag">Django</li>
+          <li class="skill-tag">Playwright</li><li class="skill-tag">Selenium</li><li class="skill-tag">PyTest</li><li class="skill-tag">TestNG</li>
+        </ul>
+      </div>
+      <div class="skills-category">
+        <h4>Cloud & DevOps</h4>
+        <ul class="skills-list">
+          <li class="skill-tag">AWS</li><li class="skill-tag">Docker</li><li class="skill-tag">Kubernetes</li><li class="skill-tag">Terraform</li>
+          <li class="skill-tag">Git</li><li class="skill-tag">CI/CD (GitHub Actions, Jenkins, Bamboo)</li>
+          <li class="skill-tag">Datadog</li><li class="skill-tag">CloudWatch</li>
+        </ul>
+      </div>
+      <div class="skills-category">
+        <h4>Software Engineering</h4>
+        <ul class="skills-list">
+          <li class="skill-tag">REST APIs</li><li class="skill-tag">Microservices</li><li class="skill-tag">System Design</li><li class="skill-tag">Data Structures & Algorithms</li><li class="skill-tag">Agile</li>
+        </ul>
+      </div>
+      <div class="skills-category">
+        <h4>Testing & Quality Engineering</h4>
+        <ul class="skills-list">
+          <li class="skill-tag">Backend Automation</li><li class="skill-tag">API Validation</li><li class="skill-tag">Performance Testing</li>
+          <li class="skill-tag">JUnit</li><li class="skill-tag">Cucumber BDD</li>
+        </ul>
+      </div>
+    </div>
+  </div>
 
-    <script>
-        const menuToggle = document.getElementById('menu-toggle');
-        const mainMenu = document.getElementById('main-menu');
-        menuToggle.addEventListener('click', () => { mainMenu.classList.toggle('active'); });
-    </script>
+  <!-- CERTIFICATIONS / CONTACT unchanged -->
+  <div id="certifications" class="content-section section-grid">
+    <h2 class="section-title">Certifications</h2>
+    <div class="section-content">
+      <div class="timeline-item"><h3><a href="#" class="item-link">Classify Images with TensorFlow on Google Cloud</a></h3><span class="date">Google</span></div>
+      <div class="timeline-item"><h3><a href="#" class="item-link">MLOps for Generative AI</a></h3><span class="date">Google Cloud</span></div>
+      <div class="timeline-item"><h3><a href="#" class="item-link">Generative AI Fundamentals</a></h3><span class="date">Databricks</span></div>
+      <div class="timeline-item"><h3><a href="#" class="item-link">Databricks Fundamentals</a></h3><span class="date">Databricks</span></div>
+      <div class="timeline-item"><h3><a href="#" class="item-link">Data Science Tools</a></h3><span class="date">IBM</span></div>
+      <div class="timeline-item"><h3><a href="#" class="item-link">Machine Learning</a></h3><span class="date">Duke University | Coursera</span></div>
+    </div>
+  </div>
+
+  <div id="contact" class="content-section section-grid">
+    <h2 class="section-title">Contact</h2>
+    <div class="section-content">
+      <div class="contact-details">
+        <p>Feel free to reach out. I'm always open to discussing new projects, creative ideas, or opportunities to be part of an ambitious team.</p>
+        <p><strong>Email:</strong> <a href="mailto:yeswanthchandrasekhar7@gmail.com">yeswanthchandrasekhar7@gmail.com</a></p>
+        <p><strong>Phone:</strong> +1 737-497-2105</p>
+        <a href="./Yeswanth_Resume_2025.pdf" download="Yeswanth-Chandrasekhar-Resume.pdf" class="resume-button">Download Resume</a>
+      </div>
+    </div>
+  </div>
+</main>
+
+<footer class="main-footer">
+  <p>&copy; 2024 Yeswanth Chandrasekhar. Built with a sprinkle of masala.</p>
+</footer>
+
+<script>
+  const menuToggle=document.getElementById('menu-toggle');
+  const mainMenu=document.getElementById('main-menu');
+  menuToggle.addEventListener('click',()=>{mainMenu.classList.toggle('active')});
+</script>
 </body>
 </html>
