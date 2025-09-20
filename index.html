@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Yeswanth Chandrasekhar | Portfolio</title>
+  <meta name="description" content="Yeswanth Chandrasekhar — Software Engineer focused on backend systems, automation, and cloud. Portfolio, experience, projects, skills, and contact."/>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -20,9 +21,20 @@
       --header-h:76px; /* updated via JS */
     }
 
+    /* Base */
     body{margin:0;font-family:'Inter',sans-serif;background-color:var(--primary-blue);color:var(--light-text);line-height:1.6;scroll-behavior:smooth}
     html{scroll-padding-top:var(--header-h)}
     .container{max-width:1100px;margin:0 auto;padding:0 2rem}
+
+    /* Skip link (a11y) */
+    .skip-link{
+      position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden;
+    }
+    .skip-link:focus{
+      position:fixed;left:1rem;top:1rem;width:auto;height:auto;padding:.5rem .75rem;
+      background:var(--accent-dark);color:white;border-radius:8px;z-index:1000;
+      outline:3px solid rgba(255,255,255,.6);
+    }
 
     /* Header */
     .main-header{padding:1.5rem 0;position:sticky;top:0;background:linear-gradient(180deg,rgba(27,94,143,.92),rgba(27,94,143,.82));z-index:100;border-bottom:1px solid rgba(255,255,255,.1);backdrop-filter:blur(8px)}
@@ -76,7 +88,7 @@
     #projects  .timeline-item::before{
       content:"";
       position:absolute;
-      left:-1.45rem; /* align with the rail */
+      left:-1.45rem;
       top:.5rem;
       width:10px;height:10px;border-radius:9999px;
       background:var(--accent-dark);
@@ -84,11 +96,19 @@
       box-shadow:0 0 0 2px rgba(14,165,233,0.15);
     }
 
-    /* Skills chips */
+    /* Skills chips — stronger contrast */
     .skills-category{margin-bottom:2.5rem}
     .skills-list{display:flex;flex-wrap:wrap;gap:.75rem;padding:0;margin:0;list-style:none}
-    .skill-tag{background-color:rgba(224,242,254,.9);border:1px solid rgba(255,255,255,.25);backdrop-filter:blur(2px);padding:.3rem .8rem;border-radius:9999px;font-size:.9rem;font-weight:500;transition:transform .15s ease,box-shadow .15s ease}
-    .skill-tag:hover{transform:translateY(-1px);box-shadow:0 4px 10px rgba(0,0,0,.12)}
+    .skill-tag{
+      background: #bfe3ff;               /* deeper accent shade for visibility */
+      color: #0a2236;                     /* dark, high-contrast text */
+      border: 1px solid rgba(14,165,233,.55);
+      padding:.35rem .9rem;border-radius:9999px;font-size:.92rem;font-weight:600;
+      box-shadow: 0 1px 0 rgba(255,255,255,.15) inset, 0 2px 8px rgba(0,0,0,.10);
+      transition:transform .15s ease, box-shadow .15s ease, background .15s ease;
+    }
+    .skill-tag:hover{transform:translateY(-1px);box-shadow:0 4px 12px rgba(0,0,0,.16)}
+    .skill-tag:focus-visible{outline:3px solid rgba(14,165,233,.7);outline-offset:2px}
 
     /* Links */
     .item-link{display:inline-block;text-decoration:none;color:var(--light-text);transition:color .3s ease}
@@ -130,13 +150,15 @@
 </head>
 <body>
 
-<header class="main-header">
+<a class="skip-link" href="#about">Skip to content</a>
+
+<header class="main-header" role="banner">
   <div class="container">
     <a href="#" class="logo">Yeswanth Chandrasekhar</a>
-    <button class="mobile-menu-button" id="menu-toggle">
-      <svg width="24" height="24" fill="none" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/></svg>
+    <button class="mobile-menu-button" id="menu-toggle" aria-label="Toggle navigation">
+      <svg width="24" height="24" fill="none" viewBox="0 0 24 24" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/></svg>
     </button>
-    <nav class="main-nav" id="main-menu">
+    <nav class="main-nav" id="main-menu" aria-label="Primary">
       <ul>
         <li><a href="#about">About</a></li>
         <li><a href="#experience">Experience</a></li>
@@ -145,11 +167,11 @@
         <li><a href="#certifications">Certifications</a></li>
         <li><a href="#contact">Contact</a></li>
         <li class="nav-socials">
-          <a href="https://github.com/YeswanthC7" target="_blank" rel="noopener noreferrer" title="GitHub">
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path fill-rule="evenodd" d="M12 2C6.477 2 2 6.477 2 12c0 4.419 2.865 8.166 6.839 9.489.5.09.682-.218.682-.484 0-.238-.009-.868-.014-1.703-2.782.604-3.369-1.342-3.369-1.342-.454-1.157-1.11-1.465-1.11-1.465-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.089 2.91.832.092-.647.35-1.089.636-1.339-2.22-.252-4.555-1.112-4.555-4.943 0-1.091.39-1.984 1.03-2.682-.103-.253-.446-1.27.098-2.645 0 0 .84-.269 2.75 1.025A9.549 9.549 0 0 1 12 6.836c.85.004 1.705.114 2.504.336 1.909-1.294 2.747-1.025 2.747-1.025.546 1.375.201 2.392.1 2.645.64.698 1.026 1.59 1.026 2.682 0 3.841-2.339 4.689-4.566 4.932.359.308.678.92.678 1.852 0 1.336-.012 2.414-.012 2.742 0 .268.18.578.688.48A10.001 10.001 0 0 0 22 12c0-5.523-4.477-10-10-10Z"/></svg>
+          <a href="https://github.com/YeswanthC7" target="_blank" rel="noopener noreferrer" title="GitHub" aria-label="GitHub profile">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M12 2C6.477 2 2 6.477 2 12c0 4.419 2.865 8.166 6.839 9.489.5.09.682-.218.682-.484 0-.238-.009-.868-.014-1.703-2.782.604-3.369-1.342-3.369-1.342-.454-1.157-1.11-1.465-1.11-1.465-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.089 2.91.832.092-.647.35-1.089.636-1.339-2.22-.252-4.555-1.112-4.555-4.943 0-1.091.39-1.984 1.03-2.682-.103-.253-.446-1.27.098-2.645 0 0 .84-.269 2.75 1.025A9.549 9.549 0 0 1 12 6.836c.85.004 1.705.114 2.504.336 1.909-1.294 2.747-1.025 2.747-1.025.546 1.375.201 2.392.1 2.645.64.698 1.026 1.59 1.026 2.682 0 3.841-2.339 4.689-4.566 4.932.359.308.678.92.678 1.852 0 1.336-.012 2.414-.012 2.742 0 .268.18.578.688.48A10.001 10.001 0 0 0 22 12c0-5.523-4.477-10-10-10Z"/></svg>
           </a>
-          <a href="https://linkedin.com/in/yeswanth-c" target="_blank" rel="noopener noreferrer" title="LinkedIn">
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14Zm-8 6H8v7h3v-7Zm-1.5-2.25a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3ZM16 11h-2v1.5c0 .83-.02 1.88-1.12 1.88C11.76 14.38 11 13.5 11 12V9h-3v7h3v-3.5c0-.88.16-1.75 1.25-1.75s1.09.81 1.09 1.75V16h3v-5Z" clip-rule="evenodd"/></svg>
+          <a href="https://linkedin.com/in/yeswanth-c" target="_blank" rel="noopener noreferrer" title="LinkedIn" aria-label="LinkedIn profile">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14Zm-8 6H8v7h3v-7Zm-1.5-2.25a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3ZM16 11h-2v1.5c0 .83-.02 1.88-1.12 1.88C11.76 14.38 11 13.5 11 12V9h-3v7h3v-3.5c0-.88.16-1.75 1.25-1.75s1.09.81 1.09 1.75V16h3v-5Z" clip-rule="evenodd"/></svg>
           </a>
         </li>
       </ul>
@@ -157,8 +179,8 @@
   </div>
 </header>
 
-<main class="container">
-  <!-- HERO -->
+<main class="container" id="main">
+  <!-- HERO (you approved earlier) -->
   <section class="hero">
     <div class="hero-text">
       <h1>Software Engineer — Backend, Automation & Cloud</h1>
@@ -177,14 +199,13 @@
   <div id="experience" class="content-section section-grid">
     <h2 class="section-title">Experience</h2>
     <div class="section-content">
+      <!-- UPDATED: Paragraph style (not bullets) -->
       <div class="timeline-item">
         <h3>Software Developer at <span class="company">Community Dreams Foundation, Orlando, Florida</span></h3>
         <span class="date">August 2025 – Present</span>
-        <ul class="description">
-          <li>Contributing to Java backend services for funding and reporting systems; implementing secure APIs for financial workflows serving community programs and partners.</li>
-          <li>Assisting in React.js front-end development, building dashboards to track funding allocations and generate financial reports.</li>
-          <li>Collaborating in Agile sprints with senior engineers to debug features, integrate front-end and backend components, and deliver incremental releases.</li>
-        </ul>
+        <p class="description">
+          Contributing to Java backend services for funding and reporting systems, where I design and implement secure REST APIs that power financial workflows for community programs and partner organizations. I also help build React.js dashboards that track funding allocations and generate financial reports, and I collaborate in Agile sprints with senior engineers to debug features, integrate front-end and backend components, and ship incremental releases.
+        </p>
       </div>
 
       <div class="timeline-item">
