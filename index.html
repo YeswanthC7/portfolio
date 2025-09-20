@@ -8,51 +8,108 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
-    :root{
-      --primary-blue:#1B5E8F;--light-text:#f8f9fa;--medium-text:#adb5bd;--dark-text:#0f172a;
-      --accent-light:#e0f2fe;--accent-dark:#0ea5e9;--button-bg:#0ea5e9;--button-hover-bg:#0284c7
+    :root {
+      --primary-blue:#1B5E8F;
+      --light-text:#f8f9fa;
+      --medium-text:#adb5bd;
+      --dark-text:#0f172a;
+      --accent-light:#e0f2fe;
+      --accent-dark:#0ea5e9;
+      --button-bg:#0ea5e9;
+      --button-hover-bg:#0284c7;
+      --header-h:76px; /* updated via JS */
     }
+
     body{margin:0;font-family:'Inter',sans-serif;background-color:var(--primary-blue);color:var(--light-text);line-height:1.6;scroll-behavior:smooth}
+    html{scroll-padding-top:var(--header-h)}
     .container{max-width:1100px;margin:0 auto;padding:0 2rem}
-    .main-header{padding:1.5rem 0;position:sticky;top:0;background-color:rgba(27,94,143,.85);z-index:100;border-bottom:1px solid rgba(255,255,255,.1);backdrop-filter:blur(5px)}
+
+    /* Header */
+    .main-header{padding:1.5rem 0;position:sticky;top:0;background:linear-gradient(180deg,rgba(27,94,143,.92),rgba(27,94,143,.82));z-index:100;border-bottom:1px solid rgba(255,255,255,.1);backdrop-filter:blur(8px)}
     .main-header .container{display:flex;justify-content:space-between;align-items:center}
     .logo{font-size:1.5rem;font-weight:700;color:var(--light-text);text-decoration:none}
     .main-nav{display:none}
     .main-nav.active{display:block;position:absolute;top:100%;left:0;width:100%;background-color:var(--primary-blue);padding:1rem 0;border-bottom:1px solid rgba(255,255,255,.1)}
     .main-nav ul{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;align-items:center;width:100%}
     .main-nav li{width:100%;text-align:center}
-    .main-nav a{color:var(--medium-text);text-decoration:none;padding:1rem;display:block;transition:color .3s ease,background-color .3s ease;font-weight:500}
+    .main-nav a{color:var(--medium-text);text-decoration:none;padding:1rem;display:block;transition:color .3s ease,background-color .3s ease;font-weight:500;position:relative;letter-spacing:.2px}
     .main-nav a:hover,.main-nav a.active-link{color:var(--light-text);background-color:rgba(255,255,255,.05)}
+    .main-nav a::after{content:"";position:absolute;left:1rem;right:1rem;bottom:.3rem;height:2px;background:transparent;transform:scaleX(0);transform-origin:left;transition:transform .25s ease}
+    .main-nav a:hover::after,.main-nav a.active-link::after{background:var(--accent-dark);transform:scaleX(1)}
     .nav-socials{display:none}
     .mobile-menu-button{display:block;background:none;border:none;cursor:pointer;padding:0}
     .mobile-menu-button svg{stroke:var(--light-text)}
-    .hero{padding:6rem 0 0 0;text-align:left}
-    .hero-text h1{font-size:3.2rem;margin:0 0 1.5rem 0;line-height:1.2;max-width:800px}
+
+    /* Hero */
+    .hero{padding:6rem 0 0 0;text-align:left;scroll-margin-top:var(--header-h)}
+    .hero-text h1{font-size:3.2rem;margin:0 0 1.5rem 0;line-height:1.15;max-width:900px}
     .hero-text p{font-size:1.2rem;color:var(--medium-text);max-width:700px}
     .hero-divider{border:0;height:1px;background:rgba(255,255,255,.1);margin:4rem 0 2rem 0}
+
+    /* Sections */
     main{padding-bottom:5rem}
-    .content-section{padding:3rem 0;border-bottom:1px solid rgba(255,255,255,.1)}
+    .content-section{padding:3rem 0;border-bottom:1px solid rgba(255,255,255,.1);scroll-margin-top:var(--header-h)}
     .content-section:last-child{border-bottom:none}
     .section-grid{display:grid;grid-template-columns:1fr;gap:2rem}
     .section-title{font-size:1.1rem;font-weight:600;text-transform:uppercase;letter-spacing:1px;color:var(--medium-text);margin-bottom:1rem}
-    .timeline-item{margin-bottom:3rem}
-    .timeline-item:last-child{margin-bottom:0}
+    .section-content{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.06);border-radius:14px;padding:1.25rem}
+    .section-content p{margin-top:0}
+    .timeline-item{margin-bottom:3rem;position:relative;padding-bottom:1.25rem;border-bottom:1px dashed rgba(255,255,255,.08)}
+    .timeline-item:last-child{margin-bottom:0;border-bottom:0}
     .timeline-item h3{margin:0;font-size:1.25rem;font-weight:600}
     .timeline-item h3 .company{color:var(--accent-dark)}
     .timeline-item .date{font-size:.9rem;color:var(--medium-text);margin-bottom:.5rem;display:block}
     .timeline-item .description{font-size:1rem;color:var(--medium-text)}
+
+    /* About paragraph tweaks */
+    #about .section-content p{max-width:62ch;line-height:1.75}
+
+    /* Timeline rails (Experience, Education, Projects) */
+    #experience .section-content,
+    #education .section-content,
+    #projects  .section-content{
+      border-left:2px solid rgba(255,255,255,0.15);
+      padding-left:1.25rem;
+    }
+    #experience .timeline-item::before,
+    #education .timeline-item::before,
+    #projects  .timeline-item::before{
+      content:"";
+      position:absolute;
+      left:-1.45rem; /* align with the rail */
+      top:.5rem;
+      width:10px;height:10px;border-radius:9999px;
+      background:var(--accent-dark);
+      border:2px solid rgba(255,255,255,0.6);
+      box-shadow:0 0 0 2px rgba(14,165,233,0.15);
+    }
+
+    /* Skills chips */
     .skills-category{margin-bottom:2.5rem}
     .skills-list{display:flex;flex-wrap:wrap;gap:.75rem;padding:0;margin:0;list-style:none}
-    .skill-tag{background-color:var(--accent-light);color:var(--dark-text);padding:.3rem .8rem;border-radius:9999px;font-size:.9rem;font-weight:500}
+    .skill-tag{background-color:rgba(224,242,254,.9);border:1px solid rgba(255,255,255,.25);backdrop-filter:blur(2px);padding:.3rem .8rem;border-radius:9999px;font-size:.9rem;font-weight:500;transition:transform .15s ease,box-shadow .15s ease}
+    .skill-tag:hover{transform:translateY(-1px);box-shadow:0 4px 10px rgba(0,0,0,.12)}
+
+    /* Links */
     .item-link{display:inline-block;text-decoration:none;color:var(--light-text);transition:color .3s ease}
     .item-link:hover{color:var(--accent-dark)}
+
+    /* Contact */
     .contact-details p{margin:0 0 1rem 0;font-size:1.1rem}
     .contact-details a{color:var(--light-text);text-decoration:none;transition:color .3s ease}
     .contact-details a:hover{color:var(--accent-dark)}
     .resume-button{display:inline-block;background-color:var(--button-bg);color:var(--light-text);padding:.8rem 1.5rem;border-radius:8px;text-decoration:none;font-weight:600;margin-top:1.5rem;transition:background-color .3s ease}
     .resume-button:hover{background-color:var(--button-hover-bg)}
+
+    /* Footer */
     .main-footer{text-align:center;padding:3rem 0 2rem 0;color:var(--medium-text);font-size:.9rem}
-    @media(min-width:768px){
+
+    /* Desktop polish */
+    @media(min-width:1024px){
+      .container{max-width:1200px}
+      .hero-text h1{font-size:3.8rem} /* larger hero on desktop */
+    }
+    @media (min-width:768px){
       .mobile-menu-button{display:none}
       .main-nav{display:block;position:static;width:auto;background:transparent;padding:0;border:none}
       .main-nav ul{flex-direction:row;align-items:center}
@@ -62,6 +119,12 @@
       .nav-socials a{margin-left:1rem}
       .section-grid{grid-template-columns:1fr 3fr;gap:3rem}
       .section-title{margin-bottom:0}
+    }
+
+    /* Reduced motion */
+    @media (prefers-reduced-motion: reduce){
+      html{scroll-behavior:auto}
+      .main-nav a::after,.skill-tag{transition:none!important}
     }
   </style>
 </head>
@@ -86,7 +149,7 @@
             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path fill-rule="evenodd" d="M12 2C6.477 2 2 6.477 2 12c0 4.419 2.865 8.166 6.839 9.489.5.09.682-.218.682-.484 0-.238-.009-.868-.014-1.703-2.782.604-3.369-1.342-3.369-1.342-.454-1.157-1.11-1.465-1.11-1.465-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.089 2.91.832.092-.647.35-1.089.636-1.339-2.22-.252-4.555-1.112-4.555-4.943 0-1.091.39-1.984 1.03-2.682-.103-.253-.446-1.27.098-2.645 0 0 .84-.269 2.75 1.025A9.549 9.549 0 0 1 12 6.836c.85.004 1.705.114 2.504.336 1.909-1.294 2.747-1.025 2.747-1.025.546 1.375.201 2.392.1 2.645.64.698 1.026 1.59 1.026 2.682 0 3.841-2.339 4.689-4.566 4.932.359.308.678.92.678 1.852 0 1.336-.012 2.414-.012 2.742 0 .268.18.578.688.48A10.001 10.001 0 0 0 22 12c0-5.523-4.477-10-10-10Z"/></svg>
           </a>
           <a href="https://linkedin.com/in/yeswanth-c" target="_blank" rel="noopener noreferrer" title="LinkedIn">
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14Zm-8 6H8v7h3v-7Zm-1.5-2.25a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3ZM16 11h-2v1.5c0 .83-.02 1.88-1.12 1.88C11.76 14.38 11 13.5 11 12V9h-3v7h3v-3.5c0-.88.16-1.75 1.25-1.75s1.09.81 1.09 1.75V16h3v-5Z"/></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14Zm-8 6H8v7h3v-7Zm-1.5-2.25a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3ZM16 11h-2v1.5c0 .83-.02 1.88-1.12 1.88C11.76 14.38 11 13.5 11 12V9h-3v7h3v-3.5c0-.88.16-1.75 1.25-1.75s1.09.81 1.09 1.75V16h3v-5Z" clip-rule="evenodd"/></svg>
           </a>
         </li>
       </ul>
@@ -95,7 +158,7 @@
 </header>
 
 <main class="container">
-  <!-- HERO updated to match resume -->
+  <!-- HERO -->
   <section class="hero">
     <div class="hero-text">
       <h1>Software Engineer — Backend, Automation & Cloud</h1>
@@ -111,11 +174,9 @@
     </div>
   </div>
 
-  <!-- EXPERIENCE -->
   <div id="experience" class="content-section section-grid">
     <h2 class="section-title">Experience</h2>
     <div class="section-content">
-      <!-- New role -->
       <div class="timeline-item">
         <h3>Software Developer at <span class="company">Community Dreams Foundation, Orlando, Florida</span></h3>
         <span class="date">August 2025 – Present</span>
@@ -152,7 +213,6 @@
     </div>
   </div>
 
-  <!-- EDUCATION -->
   <div id="education" class="content-section section-grid">
     <h2 class="section-title">Education</h2>
     <div class="section-content">
@@ -169,7 +229,6 @@
     </div>
   </div>
 
-  <!-- PROJECTS (kept as you had) -->
   <div id="projects" class="content-section section-grid">
     <h2 class="section-title">Projects</h2>
     <div class="section-content">
@@ -211,7 +270,6 @@
     </div>
   </div>
 
-  <!-- SKILLS aligned to resume -->
   <div id="skills" class="content-section section-grid">
     <h2 class="section-title">Skills</h2>
     <div class="section-content">
@@ -253,7 +311,6 @@
     </div>
   </div>
 
-  <!-- CERTIFICATIONS / CONTACT unchanged -->
   <div id="certifications" class="content-section section-grid">
     <h2 class="section-title">Certifications</h2>
     <div class="section-content">
@@ -284,9 +341,52 @@
 </footer>
 
 <script>
-  const menuToggle=document.getElementById('menu-toggle');
-  const mainMenu=document.getElementById('main-menu');
-  menuToggle.addEventListener('click',()=>{mainMenu.classList.toggle('active')});
+  const menuToggle = document.getElementById('menu-toggle');
+  const mainMenu   = document.getElementById('main-menu');
+  const header     = document.querySelector('.main-header');
+
+  function setHeaderOffset(){
+    const h = header.offsetHeight;
+    document.documentElement.style.setProperty('--header-h', h + 'px');
+  }
+  setHeaderOffset();
+  window.addEventListener('resize', setHeaderOffset);
+
+  // Mobile toggle
+  menuToggle.addEventListener('click', () => {
+    mainMenu.classList.toggle('active');
+  });
+
+  // Close menu after clicking an anchor
+  mainMenu.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', () => {
+      mainMenu.classList.remove('active');
+    });
+  });
+
+  // Active nav link on scroll
+  const links = Array.from(mainMenu.querySelectorAll('a[href^="#"]'));
+  const map = new Map(links.map(a => [a.getAttribute('href').slice(1), a]));
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      const id = entry.target.id;
+      const link = map.get(id);
+      if (!link) return;
+      if (entry.isIntersecting){
+        links.forEach(l => l.classList.remove('active-link'));
+        link.classList.add('active-link');
+      }
+    });
+  }, {
+    rootMargin: `-${getComputedStyle(document.documentElement).getPropertyValue('--header-h')} 0px -60% 0px`,
+    threshold: 0.01
+  });
+
+  map.forEach((_, id) => {
+    const el = document.getElementById(id);
+    if (el) observer.observe(el);
+  });
 </script>
 </body>
 </html>
