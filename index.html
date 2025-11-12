@@ -34,8 +34,9 @@
     .mobile-menu-button svg{stroke:var(--light-text)}
     /* Hero */
     .hero{padding:6rem 0 0 0;text-align:left;scroll-margin-top:var(--header-h)}
-    .hero-text h1{font-size:3.2rem;margin:0 0 1.5rem 0;line-height:1.15;max-width:900px}
-    .hero-divider{border:0;height:1px;background:rgba(255,255,255,.1);margin:4rem 0 2rem 0}
+    .hero-text h1{font-size:3.2rem;margin:0 0 1rem 0;line-height:1.15;max-width:900px}
+    .hero-sub{max-width:75ch;color:var(--light-text);opacity:.95;font-size:1.1rem;margin:0}
+    .hero-divider{border:0;height:1px;background:rgba(255,255,255,.1);margin:2rem 0 2rem 0}
     /* Sections */
     main{padding-bottom:5rem}
     .content-section{padding:3rem 0;border-bottom:1px solid rgba(255,255,255,.1);scroll-margin-top:var(--header-h)}
@@ -59,9 +60,7 @@
     .skills-category{margin-bottom:2.5rem}
     .skills-list{display:flex;flex-wrap:wrap;gap:.75rem;padding:0;margin:0;list-style:none}
     .skill-tag{
-      background: #bfe3ff;               /* deeper accent shade for visibility */
-      color: #0a2236;                     /* dark, high-contrast text */
-      border: 1px solid rgba(14,165,233,.55);
+      background: #bfe3ff; color: #0a2236; border: 1px solid rgba(14,165,233,.55);
       padding:.35rem .9rem;border-radius:9999px;font-size:.92rem;font-weight:600;
       box-shadow: 0 1px 0 rgba(255,255,255,.15) inset, 0 2px 8px rgba(0,0,0,.10);
       transition:transform .15s ease, box-shadow .15s ease, background .15s ease;
@@ -82,7 +81,7 @@
     /* Desktop polish */
     @media(min-width:1024px){
       .container{max-width:1200px}
-      .hero-text h1{font-size:3.8rem} /* larger hero on desktop */
+      .hero-text h1{font-size:3.8rem}
     }
     @media (min-width:768px){
       .mobile-menu-button{display:none}
@@ -96,16 +95,16 @@
       .section-title{margin-bottom:0}
     }
     /* Reduced motion */
-    @media (prefers-reduced-motion: reduce){
-      html{scroll-behavior:auto}
-      .main-nav a::after,.skill-tag{transition:none!important}
-    }
+    @media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto} .main-nav a::after,.skill-tag{transition:none!important} }
 
-    /* >>> Visibility fix ONLY for Education text <<< */
+    /* Visibility fix ONLY for Education text */
     #education .timeline-item h3,
-    #education .timeline-item p {
-      color: var(--light-text) !important;
-    }
+    #education .timeline-item p,
+    #education .timeline-item li { color: var(--light-text) !important; }
+
+    /* Bulleted lists styling */
+    .role-points, .coursework-list, .project-points { margin: .5rem 0 .5rem 1.25rem; padding-left: 1rem; }
+    .role-points li, .coursework-list li, .project-points li { margin: .25rem 0; }
   </style>
 </head>
 <body>
@@ -144,7 +143,11 @@
   <section class="hero">
     <div class="hero-text">
       <h1>Software Engineer — Backend, Automation & Cloud</h1>
-      <!-- Removed summary paragraph per request -->
+      <p class="hero-sub">
+        Software Engineer with experience in Spring Boot microservices, API automation, and cloud-native systems on AWS.
+        I build reliable backends, CI/CD pipelines, and data-driven features. Projects include an offline-first Android AR app,
+        a Go-based recommendation API, and LLM-assisted QA tooling. I value clean design, performance, and measurable impact.
+      </p>
     </div>
     <hr class="hero-divider">
   </section>
@@ -163,45 +166,56 @@
       <div class="timeline-item">
         <h3>Software Developer at <span class="company">Community Dreams Foundation, Orlando, Florida</span></h3>
         <span class="date">August 2025 – Present</span>
-        <p class="description">
-          Contributed to the Funding & Reporting System by developing Spring Boot microservices and normalized PostgreSQL schemas; delivered 10+ REST endpoints for authentication and reporting. Designed the storage layer integrated with AWS RDS (relational) and S3 (report archiving) to enable automated backups and consistent analytics. Drove OpenAPI specs and contract testing across 3 teams, reducing staging integration defects by ~30%.
-        </p>
+        <ul class="role-points">
+          <li>Developed Spring Boot microservices and normalized PostgreSQL schemas; shipped 10+ REST endpoints for auth and reporting.</li>
+          <li>Designed storage layer with AWS RDS and S3 (archival) enabling automated backups and consistent analytics.</li>
+          <li>Led OpenAPI specs and contract testing across 3 teams, reducing staging integration defects by ~30%.</li>
+        </ul>
       </div>
 
       <!-- Synchronoss -->
       <div class="timeline-item">
         <h3>Software QA Engineer at <span class="company">Synchronoss Technologies</span></h3>
         <span class="date">July 2022 – July 2023</span>
-        <p class="description">
-          Developed automation modules and backend validation tools in Java (TestNG) and Spring Boot, collaborating with developers to improve API reliability and reduce post-release defects by 20%. Supported 35+ production and pre-production releases via Bamboo CI/CD with regression automation and log analysis, reducing release cycles by 25%. Dockerized the automation framework across multiple environments, reducing setup time by 40%, and stabilized 20+ Kubernetes microservices with zero rollback incidents. Resolved 50+ Fortify and Nexus IQ vulnerabilities, ensuring 100% compliance with Verizon’s internal security standards. Partnered with the Machine Learning team to validate analytics-driven features, improving data refinement processes and boosting model result accuracy by 15%.
-        </p>
+        <ul class="role-points">
+          <li>Built backend test automation and validation tools in Java (TestNG) and Spring Boot; improved API reliability and cut post-release defects by 20%.</li>
+          <li>Supported 35+ prod/pre-prod releases with Bamboo CI/CD, regression suites, and log analysis; shortened release cycles by 25%.</li>
+          <li>Dockerized the automation framework for multi-env portability; reduced setup time by 40% and stabilized 20+ K8s microservices.</li>
+          <li>Resolved 50+ Fortify/Nexus IQ vulnerabilities, maintaining 100% compliance with Verizon’s security standards.</li>
+          <li>Partnered with ML team on analytics-driven features; improved data refinement pipelines and boosted model accuracy by 15%.</li>
+        </ul>
       </div>
 
       <!-- TCR -->
       <div class="timeline-item">
         <h3>Cloud QA & DevOps Intern at <span class="company">TCR Innovation</span></h3>
         <span class="date">January 2021 – July 2022</span>
-        <p class="description">
-          Automated REST API validation pipelines in Jenkins and GitHub Actions with Cucumber BDD and Python utilities, improving test reliability by 25%. Refactored a Node.js ingestion service by implementing CloudWatch logging and optimizing API event handling, improving backend observability and reducing runtime errors by 15%. Built reusable Terraform modules for QA environments, improving deployment reliability by 35%.
-        </p>
+        <ul class="role-points">
+          <li>Automated REST API validation in Jenkins/GitHub Actions with Cucumber BDD and Python, improving test reliability by 25%.</li>
+          <li>Refactored Node.js ingestion service with CloudWatch logging and event optimizations; reduced runtime errors by 15%.</li>
+          <li>Authored reusable Terraform modules for QA environments, increasing deployment reliability by 35%.</li>
+        </ul>
       </div>
 
-      <!-- Lets Grow More (moved above Verzeo, dates changed) -->
+      <!-- Lets Grow More -->
       <div class="timeline-item">
         <h3>Web Development Intern at <span class="company">Lets Grow More</span></h3>
         <span class="date">September 2021 – October 2021</span>
-        <p class="description">
-          Built responsive SPAs in HTML/CSS/JS; created a React app to fetch/display live API data with robust error handling. Deployed on GitHub Pages.
-        </p>
+        <ul class="role-points">
+          <li>Built responsive SPAs in HTML/CSS/JS; implemented a React app to fetch and display live API data with robust error handling.</li>
+          <li>Deployed to GitHub Pages with clean routing and asset optimization.</li>
+        </ul>
       </div>
 
-      <!-- Verzeo (below LGM now) -->
+      <!-- Verzeo -->
       <div class="timeline-item">
         <h3>Machine Learning Intern at <span class="company">Verzeo</span></h3>
         <span class="date">October 2019 – November 2019</span>
-        <p class="description">
-          Prepared 50k+ reviews in Python, boosting F1 by 15%. Built a collaborative filtering recommender (+20% CTR) and an LSTM sentiment classifier (88% accuracy), deployed with Flask; automated weekly refresh & retraining via cron.
-        </p>
+        <ul class="role-points">
+          <li>Preprocessed 50k+ reviews in Python; improved classification F1 by 15% via feature engineering and tuning.</li>
+          <li>Built collaborative filtering recommender (+20% CTR) and LSTM sentiment classifier (88% accuracy) deployed with Flask.</li>
+          <li>Automated weekly data refresh and retraining via cron with monitoring hooks.</li>
+        </ul>
       </div>
     </div>
   </div>
@@ -213,13 +227,36 @@
         <h3>University of Texas at Dallas</h3>
         <span class="date">May 2025</span>
         <p class="description">Master of Science in Business Analytics and Artificial Intelligence</p>
-        <p class="description"><em>Relevant Coursework:</em> Database Foundations for Business Analytics, Applied Machine Learning, Big Data, Business Data Warehousing, Analytics Practicum, Advanced Statistics for Data Science, Predictive Analytics for Data Science, Prescriptive Analytics, Business Analytics with R</p>
+        <p class="description"><em>Coursework</em></p>
+        <ul class="coursework-list">
+          <li>Database Foundations for Business Analytics</li>
+          <li>Applied Machine Learning</li>
+          <li>Big Data</li>
+          <li>Business Data Warehousing</li>
+          <li>Analytics Practicum</li>
+          <li>Advanced Statistics for Data Science</li>
+          <li>Predictive Analytics for Data Science</li>
+          <li>Prescriptive Analytics</li>
+          <li>Business Analytics with R</li>
+        </ul>
       </div>
       <div class="timeline-item">
         <h3>BMS Institute of Technology and Management</h3>
         <span class="date">July 2022</span>
         <p class="description">Bachelor of Technology in Computer Science and Engineering</p>
-        <p class="description"><em>Relevant Coursework:</em> Data Structures and Algorithms, Database Management Systems, Operating Systems, Object-Oriented Programming (Java), Computer Networks, Software Engineering, Web Technologies, Machine Learning, Data Mining, Cloud Computing</p>
+        <p class="description"><em>Coursework</em></p>
+        <ul class="coursework-list">
+          <li>Data Structures and Algorithms</li>
+          <li>Database Management Systems</li>
+          <li>Operating Systems</li>
+          <li>Object-Oriented Programming (Java)</li>
+          <li>Computer Networks</li>
+          <li>Software Engineering</li>
+          <li>Web Technologies</li>
+          <li>Machine Learning</li>
+          <li>Data Mining</li>
+          <li>Cloud Computing</li>
+        </ul>
       </div>
     </div>
   </div>
@@ -230,7 +267,10 @@
       <!-- ARShopping (NEW) -->
       <div class="timeline-item">
         <h3><a href="https://github.com/YeswanthC7/arshopping" target="_blank" rel="noopener noreferrer" class="item-link">ARShopping — Android AR Furniture Preview App</a></h3>
-        <p class="description">• Developed an offline-first Android AR app using Java, ARCore, and SceneView, allowing users to preview 3D furniture models in real-world environments with pinch-to-scale and rotation controls.<br>• Integrated Firebase Firestore & Storage for optional cloud data sync and model hosting; implemented local JSON catalog fallback for smooth offline browsing and wishlist persistence.</p>
+        <ul class="project-points">
+          <li>Offline-first Android AR app using Java, ARCore, and SceneView; real-world 3D placement with pinch/rotate gestures.</li>
+          <li>Optional Firebase Firestore/Storage sync for catalog and models; local JSON fallback for offline browsing and wishlist.</li>
+        </ul>
         <ul class="skills-list">
           <li class="skill-tag">Java</li><li class="skill-tag">ARCore</li><li class="skill-tag">SceneView</li><li class="skill-tag">Firebase</li><li class="skill-tag">Android Studio</li><li class="skill-tag">Glide</li>
         </ul>
@@ -239,9 +279,10 @@
       <!-- BookRec -->
       <div class="timeline-item">
         <h3><a href="https://github.com/YeswanthC7/bookrec" target="_blank" rel="noopener noreferrer" class="item-link">BookRec — Go Backend for Personalized Recommendations</a></h3>
-        <p class="description">
-          Built a containerized Go backend with JWT authentication and Oracle Cloud MySQL, integrating a NoSQL cache for session handling and real-time book recommendations. Designed a SQL-based recommendation engine using Open Library data to generate personalized suggestions while maintaining clean user–book mappings.
-        </p>
+        <ul class="project-points">
+          <li>Containerized Go backend with JWT auth and Oracle Cloud MySQL; clean user–book mappings for personalization.</li>
+          <li>SQL-driven recommendation logic on Open Library data; NoSQL cache for session handling and fast reads.</li>
+        </ul>
         <ul class="skills-list">
           <li class="skill-tag">Go</li><li class="skill-tag">Oracle Cloud</li><li class="skill-tag">MySQL</li><li class="skill-tag">Docker</li><li class="skill-tag">NoSQL</li><li class="skill-tag">REST API</li>
         </ul>
@@ -250,9 +291,10 @@
       <!-- PromptSense -->
       <div class="timeline-item">
         <h3><a href="https://promptsense.streamlit.app" target="_blank" rel="noopener noreferrer" class="item-link">PromptSense — Smart Prompt Engineering Tool</a></h3>
-        <p class="description">
-          Developed a personal prompt management tool with authentication and persona-based prompt generation using Hugging Face Transformers. Deployed on Streamlit Cloud with Docker, enabling secure multi-user access and improving prompt generation quality by 60%.
-        </p>
+        <ul class="project-points">
+          <li>Persona-based prompt management with authentication on Streamlit; deployed with Docker for multi-user access.</li>
+          <li>Hugging Face Transformers integration; practical gains in prompt quality and reuse across tasks.</li>
+        </ul>
         <ul class="skills-list">
           <li class="skill-tag">Python</li><li class="skill-tag">Streamlit</li><li class="skill-tag">Hugging Face</li><li class="skill-tag">Docker</li><li class="skill-tag">SQLite</li>
         </ul>
@@ -261,7 +303,10 @@
       <!-- WishlistBot -->
       <div class="timeline-item">
         <h3>WishlistBot — Discord Wishlist Manager</h3>
-        <p class="description">Discord bot that scrapes title/price from product URLs and stores user-scoped wishlists. <code>!wishlist</code> shows latest 5; <code>!wishlist all</code> paginates with ⏮️/⏭️ reactions. Clean embeds; per-user pagination sessions.</p>
+        <ul class="project-points">
+          <li>Scrapes product title/price and stores user-scoped wishlists; latest items and full pagination with reactions.</li>
+          <li>Robust embeds and per-user pagination sessions; clean command handling for <code>!wishlist</code> and variants.</li>
+        </ul>
         <ul class="skills-list">
           <li class="skill-tag">Python</li><li class="skill-tag">discord.py</li><li class="skill-tag">BeautifulSoup</li><li class="skill-tag">Requests</li><li class="skill-tag">python-dotenv</li><li class="skill-tag">JSON Storage</li>
         </ul>
@@ -270,7 +315,10 @@
       <!-- LLM-Driven QA Test Authoring -->
       <div class="timeline-item">
         <h3><a href="https://github.com/YeswanthC7" target="_blank" rel="noopener noreferrer" class="item-link">LLM-Driven QA Test Authoring</a></h3>
-        <p class="description">Pipeline that converts user-stories into Playwright tests via LLM prompts + AST validation; targets 60% less manual coding. CI runs cross-browser and enforces quality gates.</p>
+        <ul class="project-points">
+          <li>Generates Playwright tests from user stories via LLM prompts + AST validation; targets 60% reduction in manual coding.</li>
+          <li>CI-enforced quality gates and cross-browser runs; portable test artifacts for PR checks.</li>
+        </ul>
         <ul class="skills-list">
           <li class="skill-tag">Python</li><li class="skill-tag">Playwright</li><li class="skill-tag">PyTest</li><li class="skill-tag">GitHub Actions</li>
         </ul>
@@ -279,7 +327,10 @@
       <!-- Vehicle Ranking System -->
       <div class="timeline-item">
         <h3><a href="https://github.com/YeswanthC7" target="_blank" rel="noopener noreferrer" class="item-link">Vehicle Ranking System (Capstone)</a></h3>
-        <p class="description">Weighted ranking on 8k used-car listings; real-time scoring with SHAP explainers & outlier detection to flag overpriced listings.</p>
+        <ul class="project-points">
+          <li>Weighted ranking across 8k listings; SHAP-based explanations improve transparency of price recommendations.</li>
+          <li>Outlier detection flags overpriced inventory; interactive scoring via Streamlit UI.</li>
+        </ul>
         <ul class="skills-list">
           <li class="skill-tag">Python</li><li class="skill-tag">Random Forest</li><li class="skill-tag">Streamlit</li>
         </ul>
@@ -288,7 +339,10 @@
       <!-- Traffic Sign Recognition -->
       <div class="timeline-item">
         <h3><a href="https://github.com/YeswanthC7" target="_blank" rel="noopener noreferrer" class="item-link">Traffic Sign Recognition</a></h3>
-        <p class="description">Pipeline for GTSRB (~44k images, 43 classes). Random Forest reached 90% test accuracy.</p>
+        <ul class="project-points">
+          <li>GTSRB dataset (~44k images, 43 classes) with classic CV pipeline; achieved ~90% accuracy using Random Forest.</li>
+          <li>Preprocessing with OpenCV and feature extraction for robust, fast inference on commodity hardware.</li>
+        </ul>
         <ul class="skills-list">
           <li class="skill-tag">Python</li><li class="skill-tag">Random Forest</li><li class="skill-tag">OpenCV</li><li class="skill-tag">Applied ML</li>
         </ul>
@@ -390,9 +444,10 @@
     });
   });
 
-  // Active nav link on scroll
+  // Active nav link on scroll (fixed rootMargin)
   const links = Array.from(mainMenu.querySelectorAll('a[href^="#"]'));
   const map = new Map(links.map(a => [a.getAttribute('href').slice(1), a]));
+  const headerPad = getComputedStyle(document.documentElement).getPropertyValue('--header-h').trim() || '76px';
 
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
@@ -405,7 +460,7 @@
       }
     });
   }, {
-    rootMargin: -${getComputedStyle(document.documentElement).getPropertyValue('--header-h')} 0px -60% 0px,
+    rootMargin: `-${headerPad} 0px -60% 0px`,
     threshold: 0.01
   });
 
