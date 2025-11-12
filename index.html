@@ -100,6 +100,12 @@
       html{scroll-behavior:auto}
       .main-nav a::after,.skill-tag{transition:none!important}
     }
+
+    /* >>> Visibility fix ONLY for Education text <<< */
+    #education .timeline-item h3,
+    #education .timeline-item p {
+      color: var(--light-text) !important;
+    }
   </style>
 </head>
 <body>
@@ -207,13 +213,13 @@
         <h3>University of Texas at Dallas</h3>
         <span class="date">May 2025</span>
         <p class="description">Master of Science in Business Analytics and Artificial Intelligence</p>
-        <p class="description"><em>Relevant Coursework:</em> Machine Learning, Artificial Intelligence, Big Data Systems, Cloud Computing, Distributed Systems</p>
+        <p class="description"><em>Relevant Coursework:</em> Database Foundations for Business Analytics, Applied Machine Learning, Big Data, Business Data Warehousing, Analytics Practicum, Advanced Statistics for Data Science, Predictive Analytics for Data Science, Prescriptive Analytics, Business Analytics with R</p>
       </div>
       <div class="timeline-item">
         <h3>BMS Institute of Technology and Management</h3>
         <span class="date">July 2022</span>
         <p class="description">Bachelor of Technology in Computer Science and Engineering</p>
-        <p class="description"><em>Relevant Coursework:</em> Data Structures, Software Design, Operating Systems, Computer Networks, Software Engineering</p>
+        <p class="description"><em>Relevant Coursework:</em> Data Structures and Algorithms, Database Management Systems, Operating Systems, Object-Oriented Programming (Java), Computer Networks, Software Engineering, Web Technologies, Machine Learning, Data Mining, Cloud Computing</p>
       </div>
     </div>
   </div>
@@ -221,6 +227,15 @@
   <div id="projects" class="content-section section-grid">
     <h2 class="section-title">Projects</h2>
     <div class="section-content">
+      <!-- ARShopping (NEW) -->
+      <div class="timeline-item">
+        <h3><a href="https://github.com/YeswanthC7/arshopping" target="_blank" rel="noopener noreferrer" class="item-link">ARShopping — Android AR Furniture Preview App</a></h3>
+        <p class="description">• Developed an offline-first Android AR app using Java, ARCore, and SceneView, allowing users to preview 3D furniture models in real-world environments with pinch-to-scale and rotation controls.<br>• Integrated Firebase Firestore & Storage for optional cloud data sync and model hosting; implemented local JSON catalog fallback for smooth offline browsing and wishlist persistence.</p>
+        <ul class="skills-list">
+          <li class="skill-tag">Java</li><li class="skill-tag">ARCore</li><li class="skill-tag">SceneView</li><li class="skill-tag">Firebase</li><li class="skill-tag">Android Studio</li><li class="skill-tag">Glide</li>
+        </ul>
+      </div>
+
       <!-- BookRec -->
       <div class="timeline-item">
         <h3><a href="https://github.com/YeswanthC7/bookrec" target="_blank" rel="noopener noreferrer" class="item-link">BookRec — Go Backend for Personalized Recommendations</a></h3>
@@ -243,7 +258,7 @@
         </ul>
       </div>
 
-      <!-- WishlistBot (from previous version) -->
+      <!-- WishlistBot -->
       <div class="timeline-item">
         <h3>WishlistBot — Discord Wishlist Manager</h3>
         <p class="description">Discord bot that scrapes title/price from product URLs and stores user-scoped wishlists. <code>!wishlist</code> shows latest 5; <code>!wishlist all</code> paginates with ⏮️/⏭️ reactions. Clean embeds; per-user pagination sessions.</p>
@@ -252,7 +267,7 @@
         </ul>
       </div>
 
-      <!-- LLM-Driven QA Test Authoring (from previous version) -->
+      <!-- LLM-Driven QA Test Authoring -->
       <div class="timeline-item">
         <h3><a href="https://github.com/YeswanthC7" target="_blank" rel="noopener noreferrer" class="item-link">LLM-Driven QA Test Authoring</a></h3>
         <p class="description">Pipeline that converts user-stories into Playwright tests via LLM prompts + AST validation; targets 60% less manual coding. CI runs cross-browser and enforces quality gates.</p>
@@ -261,7 +276,7 @@
         </ul>
       </div>
 
-      <!-- Vehicle Ranking System (from previous version) -->
+      <!-- Vehicle Ranking System -->
       <div class="timeline-item">
         <h3><a href="https://github.com/YeswanthC7" target="_blank" rel="noopener noreferrer" class="item-link">Vehicle Ranking System (Capstone)</a></h3>
         <p class="description">Weighted ranking on 8k used-car listings; real-time scoring with SHAP explainers & outlier detection to flag overpriced listings.</p>
@@ -270,7 +285,7 @@
         </ul>
       </div>
 
-      <!-- Traffic Sign Recognition (from previous version) -->
+      <!-- Traffic Sign Recognition -->
       <div class="timeline-item">
         <h3><a href="https://github.com/YeswanthC7" target="_blank" rel="noopener noreferrer" class="item-link">Traffic Sign Recognition</a></h3>
         <p class="description">Pipeline for GTSRB (~44k images, 43 classes). Random Forest reached 90% test accuracy.</p>
