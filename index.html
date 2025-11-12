@@ -50,7 +50,7 @@
     .timeline-item h3 .company{color:var(--accent-dark)}
     .timeline-item .date{font-size:.9rem;color:var(--medium-text);margin-bottom:.5rem;display:block}
     .timeline-item .description{font-size:1rem;color:var(--medium-text)}
-    /* Timeline rails (Experience, Education, Projects) */
+    /* Timeline rails */
     #experience .section-content, #education .section-content, #projects .section-content{ border-left:2px solid rgba(255,255,255,0.15); padding-left:1.25rem; }
     #experience .timeline-item::before, #education .timeline-item::before, #projects .timeline-item::before{ content:""; position:absolute; left:-1.45rem; top:.5rem; width:10px;height:10px;border-radius:9999px; background:var(--accent-dark); border:2px solid rgba(255,255,255,0.6); box-shadow:0 0 0 2px rgba(14,165,233,0.15); }
     /* Skills chips */
@@ -89,12 +89,16 @@
     #education .timeline-item h3,
     #education .timeline-item p,
     #education .timeline-item li { color: var(--light-text) !important; }
-    #education .degree { font-weight:700 }           /* bold degree name */
-    #education .coursework-label { font-weight:700 } /* bold "Coursework" */
+    #education .degree { font-weight:700 }
+    #education .coursework-label { font-weight:700 }
 
     /* Bulleted lists styling */
     .role-points, .coursework-list, .project-points { margin:.5rem 0 .5rem 1.25rem; padding-left:1rem; }
     .role-points li, .coursework-list li, .project-points li { margin:.25rem 0; }
+
+    /* Ensure non-linked titles look non-clickable */
+    #projects .timeline-item h3,
+    #certifications .timeline-item h3 { text-decoration:none; cursor:default; }
   </style>
 </head>
 <body>
@@ -250,7 +254,7 @@
     <div class="section-content">
       <!-- ARShopping -->
       <div class="timeline-item">
-        <h3><a href="https://github.com/YeswanthC7/arshopping" target="_blank" rel="noopener noreferrer" class="item-link">ARShopping — Android AR Furniture Preview App</a></h3>
+        <h3>ARShopping — Android AR Furniture Preview App</h3>
         <ul class="project-points">
           <li>Offline-first Android AR app using Java, ARCore, and SceneView; real-world 3D placement with pinch/rotate gestures.</li>
           <li>Optional Firebase Firestore/Storage sync for catalog and models; local JSON fallback for offline browsing and wishlist.</li>
@@ -262,7 +266,7 @@
 
       <!-- BookRec -->
       <div class="timeline-item">
-        <h3><a href="https://github.com/YeswanthC7/bookrec" target="_blank" rel="noopener noreferrer" class="item-link">BookRec — Go Backend for Personalized Recommendations</a></h3>
+        <h3>BookRec — Go Backend for Personalized Recommendations</h3>
         <ul class="project-points">
           <li>Containerized Go backend with JWT auth and Oracle Cloud MySQL; clean user–book mappings for personalization.</li>
           <li>SQL-driven recommendation logic on Open Library data; NoSQL cache for session handling and fast reads.</li>
@@ -274,7 +278,7 @@
 
       <!-- PromptSense -->
       <div class="timeline-item">
-        <h3><a href="https://promptsense.streamlit.app" target="_blank" rel="noopener noreferrer" class="item-link">PromptSense — Smart Prompt Engineering Tool</a></h3>
+        <h3>PromptSense — Smart Prompt Engineering Tool</h3>
         <ul class="project-points">
           <li>Persona-based prompt management with authentication on Streamlit; deployed with Docker for multi-user access.</li>
           <li>Hugging Face Transformers integration; practical gains in prompt quality and reuse across tasks.</li>
@@ -298,7 +302,7 @@
 
       <!-- LLM-Driven QA Test Authoring -->
       <div class="timeline-item">
-        <h3><a href="https://github.com/YeswanthC7" target="_blank" rel="noopener noreferrer" class="item-link">LLM-Driven QA Test Authoring</a></h3>
+        <h3>LLM-Driven QA Test Authoring</h3>
         <ul class="project-points">
           <li>Generates Playwright tests from user stories via LLM prompts + AST validation; targets 60% reduction in manual coding.</li>
           <li>CI-enforced quality gates and cross-browser runs; portable test artifacts for PR checks.</li>
@@ -310,7 +314,7 @@
 
       <!-- Vehicle Ranking System -->
       <div class="timeline-item">
-        <h3><a href="https://github.com/YeswanthC7" target="_blank" rel="noopener noreferrer" class="item-link">Vehicle Ranking System (Capstone)</a></h3>
+        <h3>Vehicle Ranking System (Capstone)</h3>
         <ul class="project-points">
           <li>Weighted ranking across 8k listings; SHAP-based explanations improve transparency of price recommendations.</li>
           <li>Outlier detection flags overpriced inventory; interactive scoring via Streamlit UI.</li>
@@ -322,7 +326,7 @@
 
       <!-- Traffic Sign Recognition -->
       <div class="timeline-item">
-        <h3><a href="https://github.com/YeswanthC7" target="_blank" rel="noopener noreferrer" class="item-link">Traffic Sign Recognition</a></h3>
+        <h3>Traffic Sign Recognition</h3>
         <ul class="project-points">
           <li>GTSRB dataset (~44k images, 43 classes) with classic CV pipeline; achieved ~90% accuracy using Random Forest.</li>
           <li>Preprocessing with OpenCV and feature extraction for robust, fast inference on commodity hardware.</li>
@@ -378,12 +382,12 @@
   <div id="certifications" class="content-section section-grid">
     <h2 class="section-title">Certifications</h2>
     <div class="section-content">
-      <div class="timeline-item"><h3><a href="#" class="item-link">Classify Images with TensorFlow on Google Cloud</a></h3><span class="date">Google</span></div>
-      <div class="timeline-item"><h3><a href="#" class="item-link">MLOps for Generative AI</a></h3><span class="date">Google Cloud</span></div>
-      <div class="timeline-item"><h3><a href="#" class="item-link">Generative AI Fundamentals</a></h3><span class="date">Databricks</span></div>
-      <div class="timeline-item"><h3><a href="#" class="item-link">Databricks Fundamentals</a></h3><span class="date">Databricks</span></div>
-      <div class="timeline-item"><h3><a href="#" class="item-link">Data Science Tools</a></h3><span class="date">IBM</span></div>
-      <div class="timeline-item"><h3><a href="#" class="item-link">Machine Learning</a></h3><span class="date">Duke University | Coursera</span></div>
+      <div class="timeline-item"><h3>Classify Images with TensorFlow on Google Cloud</h3><span class="date">Google</span></div>
+      <div class="timeline-item"><h3>MLOps for Generative AI</h3><span class="date">Google Cloud</span></div>
+      <div class="timeline-item"><h3>Generative AI Fundamentals</h3><span class="date">Databricks</span></div>
+      <div class="timeline-item"><h3>Databricks Fundamentals</h3><span class="date">Databricks</span></div>
+      <div class="timeline-item"><h3>Data Science Tools</h3><span class="date">IBM</span></div>
+      <div class="timeline-item"><h3>Machine Learning</h3><span class="date">Duke University | Coursera</span></div>
     </div>
   </div>
 
