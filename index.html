@@ -18,25 +18,12 @@
       --accent-dark:#0ea5e9;
       --button-bg:#0ea5e9;
       --button-hover-bg:#0284c7;
-      --header-h:76px; /* updated via JS */
+      --header-h:76px;
     }
-
-    /* Base */
     body{margin:0;font-family:'Inter',sans-serif;background-color:var(--primary-blue);color:var(--light-text);line-height:1.6;scroll-behavior:smooth}
     html{scroll-padding-top:var(--header-h)}
     .container{max-width:1100px;margin:0 auto;padding:0 2rem}
-
-    /* Skip link (a11y) */
-    .skip-link{
-      position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden;
-    }
-    .skip-link:focus{
-      position:fixed;left:1rem;top:1rem;width:auto;height:auto;padding:.5rem .75rem;
-      background:var(--accent-dark);color:white;border-radius:8px;z-index:1000;
-      outline:3px solid rgba(255,255,255,.6);
-    }
-
-    /* Header */
+    .skip-link{position:absolute;left:-9999px}
     .main-header{padding:1.5rem 0;position:sticky;top:0;background:linear-gradient(180deg,rgba(27,94,143,.92),rgba(27,94,143,.82));z-index:100;border-bottom:1px solid rgba(255,255,255,.1);backdrop-filter:blur(8px)}
     .main-header .container{display:flex;justify-content:space-between;align-items:center}
     .logo{font-size:1.5rem;font-weight:700;color:var(--light-text);text-decoration:none}
@@ -44,121 +31,39 @@
     .main-nav.active{display:block;position:absolute;top:100%;left:0;width:100%;background-color:var(--primary-blue);padding:1rem 0;border-bottom:1px solid rgba(255,255,255,.1)}
     .main-nav ul{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;align-items:center;width:100%}
     .main-nav li{width:100%;text-align:center}
-    .main-nav a{color:var(--medium-text);text-decoration:none;padding:1rem;display:block;transition:color .3s ease,background-color .3s ease;font-weight:500;position:relative;letter-spacing:.2px}
+    .main-nav a{color:var(--medium-text);text-decoration:none;padding:1rem;display:block;transition:color .3s ease,background-color .3s ease;font-weight:500}
     .main-nav a:hover,.main-nav a.active-link{color:var(--light-text);background-color:rgba(255,255,255,.05)}
-    .main-nav a::after{content:"";position:absolute;left:1rem;right:1rem;bottom:.3rem;height:2px;background:transparent;transform:scaleX(0);transform-origin:left;transition:transform .25s ease}
-    .main-nav a:hover::after,.main-nav a.active-link::after{background:var(--accent-dark);transform:scaleX(1)}
-    .nav-socials{display:none}
     .mobile-menu-button{display:block;background:none;border:none;cursor:pointer;padding:0}
-    .mobile-menu-button svg{stroke:var(--light-text)}
-
-    /* Hero */
-    .hero{padding:6rem 0 0 0;text-align:left;scroll-margin-top:var(--header-h)}
-    .hero-text h1{font-size:3.2rem;margin:0 0 1.5rem 0;line-height:1.15;max-width:900px}
+    .hero{padding:6rem 0 0;text-align:left}
+    .hero-text h1{font-size:3.2rem;margin:0 0 1.5rem}
     .hero-text p{font-size:1.2rem;color:var(--medium-text);max-width:700px}
-    .hero-divider{border:0;height:1px;background:rgba(255,255,255,.1);margin:4rem 0 2rem 0}
-
-    /* Sections */
+    .hero-divider{border:0;height:1px;background:rgba(255,255,255,.1);margin:4rem 0 2rem}
     main{padding-bottom:5rem}
-    .content-section{padding:3rem 0;border-bottom:1px solid rgba(255,255,255,.1);scroll-margin-top:var(--header-h)}
-    .content-section:last-child{border-bottom:none}
+    .content-section{padding:3rem 0;border-bottom:1px solid rgba(255,255,255,.1)}
     .section-grid{display:grid;grid-template-columns:1fr;gap:2rem}
     .section-title{font-size:1.1rem;font-weight:600;text-transform:uppercase;letter-spacing:1px;color:var(--medium-text);margin-bottom:1rem}
     .section-content{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.06);border-radius:14px;padding:1.25rem}
-    .section-content p{margin-top:0}
-    .timeline-item{margin-bottom:3rem;position:relative;padding-bottom:1.25rem;border-bottom:1px dashed rgba(255,255,255,.08)}
-    .timeline-item:last-child{margin-bottom:0;border-bottom:0}
+    .timeline-item{margin-bottom:3rem;padding-bottom:1.25rem;border-bottom:1px dashed rgba(255,255,255,.08)}
     .timeline-item h3{margin:0;font-size:1.25rem;font-weight:600}
     .timeline-item h3 .company{color:var(--accent-dark)}
     .timeline-item .date{font-size:.9rem;color:var(--medium-text);margin-bottom:.5rem;display:block}
     .timeline-item .description{font-size:1rem;color:var(--medium-text)}
-
-    /* About paragraph tweaks */
-    #about .section-content p{max-width:62ch;line-height:1.75}
-
-    /* Timeline rails (Experience, Education, Projects) */
-    #experience .section-content,
-    #education .section-content,
-    #projects  .section-content{
-      border-left:2px solid rgba(255,255,255,0.15);
-      padding-left:1.25rem;
-    }
-    #experience .timeline-item::before,
-    #education .timeline-item::before,
-    #projects  .timeline-item::before{
-      content:"";
-      position:absolute;
-      left:-1.45rem;
-      top:.5rem;
-      width:10px;height:10px;border-radius:9999px;
-      background:var(--accent-dark);
-      border:2px solid rgba(255,255,255,0.6);
-      box-shadow:0 0 0 2px rgba(14,165,233,0.15);
-    }
-
-    /* Skills chips — stronger contrast */
-    .skills-category{margin-bottom:2.5rem}
     .skills-list{display:flex;flex-wrap:wrap;gap:.75rem;padding:0;margin:0;list-style:none}
-    .skill-tag{
-      background: #bfe3ff;               /* deeper accent shade for visibility */
-      color: #0a2236;                     /* dark, high-contrast text */
-      border: 1px solid rgba(14,165,233,.55);
-      padding:.35rem .9rem;border-radius:9999px;font-size:.92rem;font-weight:600;
-      box-shadow: 0 1px 0 rgba(255,255,255,.15) inset, 0 2px 8px rgba(0,0,0,.10);
-      transition:transform .15s ease, box-shadow .15s ease, background .15s ease;
-    }
-    .skill-tag:hover{transform:translateY(-1px);box-shadow:0 4px 12px rgba(0,0,0,.16)}
-    .skill-tag:focus-visible{outline:3px solid rgba(14,165,233,.7);outline-offset:2px}
-
-    /* Links */
-    .item-link{display:inline-block;text-decoration:none;color:var(--light-text);transition:color .3s ease}
+    .skill-tag{background:#bfe3ff;color:#0a2236;border:1px solid rgba(14,165,233,.55);padding:.35rem .9rem;border-radius:9999px;font-size:.92rem;font-weight:600}
+    .item-link{color:var(--light-text);text-decoration:none}
     .item-link:hover{color:var(--accent-dark)}
-
-    /* Contact */
-    .contact-details p{margin:0 0 1rem 0;font-size:1.1rem}
-    .contact-details a{color:var(--light-text);text-decoration:none;transition:color .3s ease}
-    .contact-details a:hover{color:var(--accent-dark)}
-    .resume-button{display:inline-block;background-color:var(--button-bg);color:var(--light-text);padding:.8rem 1.5rem;border-radius:8px;text-decoration:none;font-weight:600;margin-top:1.5rem;transition:background-color .3s ease}
-    .resume-button:hover{background-color:var(--button-hover-bg)}
-
-    /* Footer */
-    .main-footer{text-align:center;padding:3rem 0 2rem 0;color:var(--medium-text);font-size:.9rem}
-
-    /* Desktop polish */
-    @media(min-width:1024px){
-      .container{max-width:1200px}
-      .hero-text h1{font-size:3.8rem} /* larger hero on desktop */
-    }
-    @media (min-width:768px){
-      .mobile-menu-button{display:none}
-      .main-nav{display:block;position:static;width:auto;background:transparent;padding:0;border:none}
-      .main-nav ul{flex-direction:row;align-items:center}
-      .main-nav li{width:auto}
-      .main-nav a{padding:.5rem 1rem;display:inline-block}
-      .nav-socials{display:flex;align-items:center;margin-left:1rem}
-      .nav-socials a{margin-left:1rem}
-      .section-grid{grid-template-columns:1fr 3fr;gap:3rem}
-      .section-title{margin-bottom:0}
-    }
-
-    /* Reduced motion */
-    @media (prefers-reduced-motion: reduce){
-      html{scroll-behavior:auto}
-      .main-nav a::after,.skill-tag{transition:none!important}
-    }
+    .resume-button{display:inline-block;background-color:var(--button-bg);color:var(--light-text);padding:.8rem 1.5rem;border-radius:8px;text-decoration:none;font-weight:600;margin-top:1.5rem}
   </style>
 </head>
 <body>
 
-<a class="skip-link" href="#about">Skip to content</a>
-
-<header class="main-header" role="banner">
+<header class="main-header">
   <div class="container">
     <a href="#" class="logo">Yeswanth Chandrasekhar</a>
-    <button class="mobile-menu-button" id="menu-toggle" aria-label="Toggle navigation">
-      <svg width="24" height="24" fill="none" viewBox="0 0 24 24" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/></svg>
+    <button class="mobile-menu-button" id="menu-toggle">
+      <svg width="24" height="24" fill="none" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/></svg>
     </button>
-    <nav class="main-nav" id="main-menu" aria-label="Primary">
+    <nav class="main-nav" id="main-menu">
       <ul>
         <li><a href="#about">About</a></li>
         <li><a href="#experience">Experience</a></li>
@@ -166,86 +71,43 @@
         <li><a href="#skills">Skills</a></li>
         <li><a href="#certifications">Certifications</a></li>
         <li><a href="#contact">Contact</a></li>
-        <li class="nav-socials">
-          <a href="https://github.com/YeswanthC7" target="_blank" rel="noopener noreferrer" title="GitHub" aria-label="GitHub profile">
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M12 2C6.477 2 2 6.477 2 12c0 4.419 2.865 8.166 6.839 9.489.5.09.682-.218.682-.484 0-.238-.009-.868-.014-1.703-2.782.604-3.369-1.342-3.369-1.342-.454-1.157-1.11-1.465-1.11-1.465-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.089 2.91.832.092-.647.35-1.089.636-1.339-2.22-.252-4.555-1.112-4.555-4.943 0-1.091.39-1.984 1.03-2.682-.103-.253-.446-1.27.098-2.645 0 0 .84-.269 2.75 1.025A9.549 9.549 0 0 1 12 6.836c.85.004 1.705.114 2.504.336 1.909-1.294 2.747-1.025 2.747-1.025.546 1.375.201 2.392.1 2.645.64.698 1.026 1.59 1.026 2.682 0 3.841-2.339 4.689-4.566 4.932.359.308.678.92.678 1.852 0 1.336-.012 2.414-.012 2.742 0 .268.18.578.688.48A10.001 10.001 0 0 0 22 12c0-5.523-4.477-10-10-10Z"/></svg>
-          </a>
-          <a href="https://linkedin.com/in/yeswanth-c" target="_blank" rel="noopener noreferrer" title="LinkedIn" aria-label="LinkedIn profile">
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14Zm-8 6H8v7h3v-7Zm-1.5-2.25a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3ZM16 11h-2v1.5c0 .83-.02 1.88-1.12 1.88C11.76 14.38 11 13.5 11 12V9h-3v7h3v-3.5c0-.88.16-1.75 1.25-1.75s1.09.81 1.09 1.75V16h3v-5Z" clip-rule="evenodd"/></svg>
-          </a>
-        </li>
       </ul>
     </nav>
   </div>
 </header>
 
-<main class="container" id="main">
-  <!-- HERO (you approved earlier) -->
+<main class="container">
   <section class="hero">
     <div class="hero-text">
       <h1>Software Engineer — Backend, Automation & Cloud</h1>
-      <p>2.5+ years building scalable APIs, distributed systems, and CI/CD pipelines. Proficient in Java, Python, Spring Boot, React, SQL, AWS, Docker, and Kubernetes. Experience across funding/reporting platforms, AI-driven automation, and cloud-native apps; focused on reliability, performance, and impact in Agile teams.</p>
+      <p>2.5+ years building scalable APIs, distributed systems, and CI/CD pipelines. Proficient in Java, Python, Spring Boot, React, SQL, AWS, Docker, and Kubernetes.</p>
     </div>
     <hr class="hero-divider">
   </section>
 
-  <div id="about" class="content-section section-grid">
-    <h2 class="section-title">About</h2>
-    <div class="section-content">
-      <p>I design reliable software and automation that scale. Recent work includes secure REST services, distributed test automation, and React dashboards for reporting workflows. I enjoy performance tuning, clear systems design, and partnering with cross-functional teams to deliver measurable business value.</p>
-    </div>
-  </div>
-
   <div id="experience" class="content-section section-grid">
     <h2 class="section-title">Experience</h2>
     <div class="section-content">
-      <!-- UPDATED: Paragraph style (not bullets) -->
       <div class="timeline-item">
-        <h3>Software Developer at <span class="company">Community Dreams Foundation, Orlando, Florida</span></h3>
-        <span class="date">August 2025 – Present</span>
+        <h3>Software QA Engineer at <span class="company">Synchronoss Technologies</span></h3>
+        <span class="date">July 2022 – July 2023</span>
         <p class="description">
-          Contributing to Java backend services for funding and reporting systems, where I design and implement secure REST APIs that power financial workflows for community programs and partner organizations. I also help build React.js dashboards that track funding allocations and generate financial reports, and I collaborate in Agile sprints with senior engineers to debug features, integrate front-end and backend components, and ship incremental releases.
+          Developed automation modules and backend validation tools in Java (TestNG) and Spring Boot, collaborating with developers to improve API reliability and reduce post-release defects by 20%. 
+          Supported 35+ production and pre-production releases via Bamboo CI/CD with regression automation and log analysis, reducing release cycles by 25%. 
+          Dockerized the automation framework across multiple environments, reducing setup time by 40%, and stabilized 20+ Kubernetes microservices with zero rollback incidents. 
+          Resolved 50+ Fortify and Nexus IQ vulnerabilities, ensuring 100% compliance with Verizon’s internal security standards. 
+          Partnered with the Machine Learning team to validate analytics-driven features, improving data refinement processes and boosting model result accuracy by 15%.
         </p>
       </div>
 
       <div class="timeline-item">
-        <h3>Software QA Engineer at <span class="company">Synchronoss Technologies</span></h3>
-        <span class="date">July 2022 – July 2023</span>
-        <p class="description">Led backend automation testing for Verizon Cloud application APIs using Maven, TestNG, and Shell scripting, improving release cycle stability. Containerized the automation test suite using Docker to reduce environment-related failures. Collaborated with the Machine Learning team on analytics-driven features, improving model result accuracy by 15%.</p>
-      </div>
-
-      <div class="timeline-item">
-        <h3>Cloud QA & DevOps Intern at <span class="company">TCR Innovation</span></h3>
+        <h3>Cloud QA and DevOps Intern at <span class="company">TCR Innovation</span></h3>
         <span class="date">January 2021 – July 2022</span>
-        <p class="description">Authored Java/TestNG scripts in LocalStack for Lambda and API Gateway smoke tests. Helped design Terraform modules for temporary QA environments and enhanced a Node.js ingestion service with CloudWatch metrics. Monitored Lambdas with Datadog APM to flag memory spikes.</p>
-      </div>
-
-      <div class="timeline-item">
-        <h3>Machine Learning Intern at <span class="company">Verzeo</span></h3>
-        <span class="date">October 2019 – November 2019</span>
-        <p class="description">Prepared 50k reviews in Python, boosting F1 by 15%. Built a collaborative filtering recommender (+20% CTR) and an LSTM sentiment classifier (88% accuracy), deployed with Flask; automated weekly refresh & retraining via cron.</p>
-      </div>
-
-      <div class="timeline-item">
-        <h3>Web Development Intern at <span class="company">Lets Grow More</span></h3>
-        <span class="date">October 2021 – November 2021</span>
-        <p class="description">Built responsive SPAs in HTML/CSS/JS; created a React app to fetch/display live API data with robust error handling. Deployed on GitHub Pages.</p>
-      </div>
-    </div>
-  </div>
-
-  <div id="education" class="content-section section-grid">
-    <h2 class="section-title">Education</h2>
-    <div class="section-content">
-      <div class="timeline-item">
-        <h3>University of Texas at Dallas</h3>
-        <span class="date">May 2025</span>
-        <p class="description">Master of Science in Business Analytics and Artificial Intelligence</p>
-      </div>
-      <div class="timeline-item">
-        <h3>BMS Institute of Technology and Management</h3>
-        <span class="date">July 2022</span>
-        <p class="description">Bachelor of Technology in Computer Science and Engineering</p>
+        <p class="description">
+          Automated REST API validation pipelines in Jenkins and GitHub Actions with Cucumber BDD and Python utilities, improving test reliability by 25%. 
+          Refactored a Node.js ingestion service by implementing CloudWatch logging and optimizing API event handling, improving backend observability and reducing runtime errors by 15%. 
+          Built reusable Terraform modules for QA environments, improving deployment reliability by 35%.
+        </p>
       </div>
     </div>
   </div>
@@ -254,160 +116,28 @@
     <h2 class="section-title">Projects</h2>
     <div class="section-content">
       <div class="timeline-item">
-        <h3>WishlistBot — Discord Wishlist Manager</h3>
-        <p class="description">Discord bot that scrapes title/price from any product URL and stores user-scoped wishlists. <code>!wishlist</code> shows latest 5; <code>!wishlist all</code> paginates with ⏮️/⏭️ reactions. Clean embeds; per-user pagination sessions.</p>
+        <h3><a href="https://github.com/YeswanthC7/bookrec" target="_blank" rel="noopener noreferrer" class="item-link">BookRec — Go Backend for Personalized Recommendations</a></h3>
+        <p class="description">
+          Built a containerized Go backend with JWT authentication and Oracle Cloud MySQL, integrating a NoSQL cache for session handling and real-time book recommendations. 
+          Designed a SQL-based recommendation engine using Open Library data to generate personalized suggestions while maintaining clean user–book mappings.
+        </p>
         <ul class="skills-list">
-          <li class="skill-tag">Python</li><li class="skill-tag">discord.py</li><li class="skill-tag">BeautifulSoup</li><li class="skill-tag">Requests</li><li class="skill-tag">python-dotenv</li><li class="skill-tag">JSON Storage</li>
+          <li class="skill-tag">Go</li><li class="skill-tag">Oracle Cloud</li><li class="skill-tag">MySQL</li><li class="skill-tag">Docker</li><li class="skill-tag">NoSQL</li><li class="skill-tag">REST API</li>
         </ul>
       </div>
+
       <div class="timeline-item">
         <h3><a href="https://promptsense.streamlit.app" target="_blank" rel="noopener noreferrer" class="item-link">PromptSense — Smart Prompt Engineering Tool</a></h3>
-        <p class="description">Transforms rough ideas into polished prompts for Gemini, ChatGPT, Claude. Persona & mode presets; advanced techniques page; custom-styled Streamlit UI; API-ready via Gemini client.</p>
+        <p class="description">
+          Developed a personal prompt management tool with authentication and persona-based prompt generation using Hugging Face Transformers. 
+          Deployed on Streamlit Cloud with Docker, enabling secure multi-user access and improving prompt generation quality by 60%.
+        </p>
         <ul class="skills-list">
-          <li class="skill-tag">Python</li><li class="skill-tag">Streamlit</li><li class="skill-tag">Gemini API</li><li class="skill-tag">Prompt Engineering</li><li class="skill-tag">REST</li>
+          <li class="skill-tag">Python</li><li class="skill-tag">Streamlit</li><li class="skill-tag">Hugging Face</li><li class="skill-tag">Docker</li><li class="skill-tag">SQLite</li>
         </ul>
-      </div>
-      <div class="timeline-item">
-        <h3><a href="https://github.com/YeswanthC7" target="_blank" rel="noopener noreferrer" class="item-link">LLM-Driven QA Test Authoring</a></h3>
-        <p class="description">Pipeline that converts user-stories into Playwright tests via LLM prompts + AST validation; targets 60% less manual coding. CI runs cross-browser and enforces quality gates.</p>
-        <ul class="skills-list">
-          <li class="skill-tag">Python</li><li class="skill-tag">Playwright</li><li class="skill-tag">PyTest</li><li class="skill-tag">GitHub Actions</li>
-        </ul>
-      </div>
-      <div class="timeline-item">
-        <h3><a href="https://github.com/YeswanthC7" target="_blank" rel="noopener noreferrer" class="item-link">Vehicle Ranking System (Capstone)</a></h3>
-        <p class="description">Weighted ranking on 8k used-car listings; real-time scoring with SHAP explainers & outlier detection to flag overpriced listings.</p>
-        <ul class="skills-list">
-          <li class="skill-tag">Python</li><li class="skill-tag">Random Forest</li><li class="skill-tag">Streamlit</li>
-        </ul>
-      </div>
-      <div class="timeline-item">
-        <h3><a href="https://github.com/YeswanthC7" target="_blank" rel="noopener noreferrer" class="item-link">Traffic Sign Recognition</a></h3>
-        <p class="description">Pipeline for GTSRB (~44k images, 43 classes). Random Forest reached 90% test accuracy.</p>
-        <ul class="skills-list">
-          <li class="skill-tag">Python</li><li class="skill-tag">Random Forest</li><li class="skill-tag">OpenCV</li><li class="skill-tag">Applied ML</li>
-        </ul>
-      </div>
-    </div>
-  </div>
-
-  <div id="skills" class="content-section section-grid">
-    <h2 class="section-title">Skills</h2>
-    <div class="section-content">
-      <div class="skills-category">
-        <h4>Programming & Databases</h4>
-        <ul class="skills-list">
-          <li class="skill-tag">Java</li><li class="skill-tag">Python</li><li class="skill-tag">JavaScript</li><li class="skill-tag">TypeScript</li><li class="skill-tag">SQL</li>
-          <li class="skill-tag">PostgreSQL</li><li class="skill-tag">MongoDB</li><li class="skill-tag">MariaDB</li>
-        </ul>
-      </div>
-      <div class="skills-category">
-        <h4>Frameworks & Libraries</h4>
-        <ul class="skills-list">
-          <li class="skill-tag">Spring Boot</li><li class="skill-tag">React.js</li><li class="skill-tag">Node.js</li><li class="skill-tag">Django</li>
-          <li class="skill-tag">Playwright</li><li class="skill-tag">Selenium</li><li class="skill-tag">PyTest</li><li class="skill-tag">TestNG</li>
-        </ul>
-      </div>
-      <div class="skills-category">
-        <h4>Cloud & DevOps</h4>
-        <ul class="skills-list">
-          <li class="skill-tag">AWS</li><li class="skill-tag">Docker</li><li class="skill-tag">Kubernetes</li><li class="skill-tag">Terraform</li>
-          <li class="skill-tag">Git</li><li class="skill-tag">CI/CD (GitHub Actions, Jenkins, Bamboo)</li>
-          <li class="skill-tag">Datadog</li><li class="skill-tag">CloudWatch</li>
-        </ul>
-      </div>
-      <div class="skills-category">
-        <h4>Software Engineering</h4>
-        <ul class="skills-list">
-          <li class="skill-tag">REST APIs</li><li class="skill-tag">Microservices</li><li class="skill-tag">System Design</li><li class="skill-tag">Data Structures & Algorithms</li><li class="skill-tag">Agile</li>
-        </ul>
-      </div>
-      <div class="skills-category">
-        <h4>Testing & Quality Engineering</h4>
-        <ul class="skills-list">
-          <li class="skill-tag">Backend Automation</li><li class="skill-tag">API Validation</li><li class="skill-tag">Performance Testing</li>
-          <li class="skill-tag">JUnit</li><li class="skill-tag">Cucumber BDD</li>
-        </ul>
-      </div>
-    </div>
-  </div>
-
-  <div id="certifications" class="content-section section-grid">
-    <h2 class="section-title">Certifications</h2>
-    <div class="section-content">
-      <div class="timeline-item"><h3><a href="#" class="item-link">Classify Images with TensorFlow on Google Cloud</a></h3><span class="date">Google</span></div>
-      <div class="timeline-item"><h3><a href="#" class="item-link">MLOps for Generative AI</a></h3><span class="date">Google Cloud</span></div>
-      <div class="timeline-item"><h3><a href="#" class="item-link">Generative AI Fundamentals</a></h3><span class="date">Databricks</span></div>
-      <div class="timeline-item"><h3><a href="#" class="item-link">Databricks Fundamentals</a></h3><span class="date">Databricks</span></div>
-      <div class="timeline-item"><h3><a href="#" class="item-link">Data Science Tools</a></h3><span class="date">IBM</span></div>
-      <div class="timeline-item"><h3><a href="#" class="item-link">Machine Learning</a></h3><span class="date">Duke University | Coursera</span></div>
-    </div>
-  </div>
-
-  <div id="contact" class="content-section section-grid">
-    <h2 class="section-title">Contact</h2>
-    <div class="section-content">
-      <div class="contact-details">
-        <p>Feel free to reach out. I'm always open to discussing new projects, creative ideas, or opportunities to be part of an ambitious team.</p>
-        <p><strong>Email:</strong> <a href="mailto:yeswanthchandrasekhar7@gmail.com">yeswanthchandrasekhar7@gmail.com</a></p>
-        <p><strong>Phone:</strong> +1 737-497-2105</p>
-        <a href="./Yeswanth_Resume_2025.pdf" download="Yeswanth-Chandrasekhar-Resume.pdf" class="resume-button">Download Resume</a>
       </div>
     </div>
   </div>
 </main>
-
-<footer class="main-footer">
-  <p>&copy; 2024 Yeswanth Chandrasekhar. Built with a sprinkle of masala.</p>
-</footer>
-
-<script>
-  const menuToggle = document.getElementById('menu-toggle');
-  const mainMenu   = document.getElementById('main-menu');
-  const header     = document.querySelector('.main-header');
-
-  function setHeaderOffset(){
-    const h = header.offsetHeight;
-    document.documentElement.style.setProperty('--header-h', h + 'px');
-  }
-  setHeaderOffset();
-  window.addEventListener('resize', setHeaderOffset);
-
-  // Mobile toggle
-  menuToggle.addEventListener('click', () => {
-    mainMenu.classList.toggle('active');
-  });
-
-  // Close menu after clicking an anchor
-  mainMenu.querySelectorAll('a[href^="#"]').forEach(a => {
-    a.addEventListener('click', () => {
-      mainMenu.classList.remove('active');
-    });
-  });
-
-  // Active nav link on scroll
-  const links = Array.from(mainMenu.querySelectorAll('a[href^="#"]'));
-  const map = new Map(links.map(a => [a.getAttribute('href').slice(1), a]));
-
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      const id = entry.target.id;
-      const link = map.get(id);
-      if (!link) return;
-      if (entry.isIntersecting){
-        links.forEach(l => l.classList.remove('active-link'));
-        link.classList.add('active-link');
-      }
-    });
-  }, {
-    rootMargin: `-${getComputedStyle(document.documentElement).getPropertyValue('--header-h')} 0px -60% 0px`,
-    threshold: 0.01
-  });
-
-  map.forEach((_, id) => {
-    const el = document.getElementById(id);
-    if (el) observer.observe(el);
-  });
-</script>
 </body>
 </html>
