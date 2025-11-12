@@ -35,7 +35,6 @@
     /* Hero */
     .hero{padding:6rem 0 0 0;text-align:left;scroll-margin-top:var(--header-h)}
     .hero-text h1{font-size:3.2rem;margin:0 0 1.5rem 0;line-height:1.15;max-width:900px}
-    .hero-text p{font-size:1.2rem;color:var(--medium-text);max-width:700px}
     .hero-divider{border:0;height:1px;background:rgba(255,255,255,.1);margin:4rem 0 2rem 0}
     /* Sections */
     main{padding-bottom:5rem}
@@ -139,7 +138,7 @@
   <section class="hero">
     <div class="hero-text">
       <h1>Software Engineer — Backend, Automation & Cloud</h1>
-      <p>2.5+ years building scalable APIs, distributed systems, and CI/CD pipelines. Proficient in Java, Python, Spring Boot, React, SQL, AWS, Docker, and Kubernetes. Experience across funding/reporting platforms, AI-driven automation, and cloud-native apps; focused on reliability, performance, and impact in Agile teams.</p>
+      <!-- Removed summary paragraph per request -->
     </div>
     <hr class="hero-divider">
   </section>
@@ -154,7 +153,7 @@
   <div id="experience" class="content-section section-grid">
     <h2 class="section-title">Experience</h2>
     <div class="section-content">
-      <!-- CDF — strengthened phrasing -->
+      <!-- CDF -->
       <div class="timeline-item">
         <h3>Software Developer at <span class="company">Community Dreams Foundation, Orlando, Florida</span></h3>
         <span class="date">August 2025 – Present</span>
@@ -163,6 +162,7 @@
         </p>
       </div>
 
+      <!-- Synchronoss -->
       <div class="timeline-item">
         <h3>Software QA Engineer at <span class="company">Synchronoss Technologies</span></h3>
         <span class="date">July 2022 – July 2023</span>
@@ -171,6 +171,7 @@
         </p>
       </div>
 
+      <!-- TCR -->
       <div class="timeline-item">
         <h3>Cloud QA & DevOps Intern at <span class="company">TCR Innovation</span></h3>
         <span class="date">January 2021 – July 2022</span>
@@ -179,19 +180,21 @@
         </p>
       </div>
 
+      <!-- Lets Grow More (moved above Verzeo, dates changed) -->
+      <div class="timeline-item">
+        <h3>Web Development Intern at <span class="company">Lets Grow More</span></h3>
+        <span class="date">September 2021 – October 2021</span>
+        <p class="description">
+          Built responsive SPAs in HTML/CSS/JS; created a React app to fetch/display live API data with robust error handling. Deployed on GitHub Pages.
+        </p>
+      </div>
+
+      <!-- Verzeo (below LGM now) -->
       <div class="timeline-item">
         <h3>Machine Learning Intern at <span class="company">Verzeo</span></h3>
         <span class="date">October 2019 – November 2019</span>
         <p class="description">
           Prepared 50k+ reviews in Python, boosting F1 by 15%. Built a collaborative filtering recommender (+20% CTR) and an LSTM sentiment classifier (88% accuracy), deployed with Flask; automated weekly refresh & retraining via cron.
-        </p>
-      </div>
-
-      <div class="timeline-item">
-        <h3>Web Development Intern at <span class="company">Lets Grow More</span></h3>
-        <span class="date">October 2021 – November 2021</span>
-        <p class="description">
-          Built responsive SPAs in HTML/CSS/JS; created a React app to fetch/display live API data with robust error handling. Deployed on GitHub Pages.
         </p>
       </div>
     </div>
@@ -204,11 +207,13 @@
         <h3>University of Texas at Dallas</h3>
         <span class="date">May 2025</span>
         <p class="description">Master of Science in Business Analytics and Artificial Intelligence</p>
+        <p class="description"><em>Relevant Coursework:</em> Machine Learning, Artificial Intelligence, Big Data Systems, Cloud Computing, Distributed Systems</p>
       </div>
       <div class="timeline-item">
         <h3>BMS Institute of Technology and Management</h3>
         <span class="date">July 2022</span>
         <p class="description">Bachelor of Technology in Computer Science and Engineering</p>
+        <p class="description"><em>Relevant Coursework:</em> Data Structures, Software Design, Operating Systems, Computer Networks, Software Engineering</p>
       </div>
     </div>
   </div>
@@ -216,7 +221,7 @@
   <div id="projects" class="content-section section-grid">
     <h2 class="section-title">Projects</h2>
     <div class="section-content">
-      <!-- BookRec before PromptSense -->
+      <!-- BookRec -->
       <div class="timeline-item">
         <h3><a href="https://github.com/YeswanthC7/bookrec" target="_blank" rel="noopener noreferrer" class="item-link">BookRec — Go Backend for Personalized Recommendations</a></h3>
         <p class="description">
@@ -227,6 +232,7 @@
         </ul>
       </div>
 
+      <!-- PromptSense -->
       <div class="timeline-item">
         <h3><a href="https://promptsense.streamlit.app" target="_blank" rel="noopener noreferrer" class="item-link">PromptSense — Smart Prompt Engineering Tool</a></h3>
         <p class="description">
@@ -234,6 +240,42 @@
         </p>
         <ul class="skills-list">
           <li class="skill-tag">Python</li><li class="skill-tag">Streamlit</li><li class="skill-tag">Hugging Face</li><li class="skill-tag">Docker</li><li class="skill-tag">SQLite</li>
+        </ul>
+      </div>
+
+      <!-- WishlistBot (from previous version) -->
+      <div class="timeline-item">
+        <h3>WishlistBot — Discord Wishlist Manager</h3>
+        <p class="description">Discord bot that scrapes title/price from product URLs and stores user-scoped wishlists. <code>!wishlist</code> shows latest 5; <code>!wishlist all</code> paginates with ⏮️/⏭️ reactions. Clean embeds; per-user pagination sessions.</p>
+        <ul class="skills-list">
+          <li class="skill-tag">Python</li><li class="skill-tag">discord.py</li><li class="skill-tag">BeautifulSoup</li><li class="skill-tag">Requests</li><li class="skill-tag">python-dotenv</li><li class="skill-tag">JSON Storage</li>
+        </ul>
+      </div>
+
+      <!-- LLM-Driven QA Test Authoring (from previous version) -->
+      <div class="timeline-item">
+        <h3><a href="https://github.com/YeswanthC7" target="_blank" rel="noopener noreferrer" class="item-link">LLM-Driven QA Test Authoring</a></h3>
+        <p class="description">Pipeline that converts user-stories into Playwright tests via LLM prompts + AST validation; targets 60% less manual coding. CI runs cross-browser and enforces quality gates.</p>
+        <ul class="skills-list">
+          <li class="skill-tag">Python</li><li class="skill-tag">Playwright</li><li class="skill-tag">PyTest</li><li class="skill-tag">GitHub Actions</li>
+        </ul>
+      </div>
+
+      <!-- Vehicle Ranking System (from previous version) -->
+      <div class="timeline-item">
+        <h3><a href="https://github.com/YeswanthC7" target="_blank" rel="noopener noreferrer" class="item-link">Vehicle Ranking System (Capstone)</a></h3>
+        <p class="description">Weighted ranking on 8k used-car listings; real-time scoring with SHAP explainers & outlier detection to flag overpriced listings.</p>
+        <ul class="skills-list">
+          <li class="skill-tag">Python</li><li class="skill-tag">Random Forest</li><li class="skill-tag">Streamlit</li>
+        </ul>
+      </div>
+
+      <!-- Traffic Sign Recognition (from previous version) -->
+      <div class="timeline-item">
+        <h3><a href="https://github.com/YeswanthC7" target="_blank" rel="noopener noreferrer" class="item-link">Traffic Sign Recognition</a></h3>
+        <p class="description">Pipeline for GTSRB (~44k images, 43 classes). Random Forest reached 90% test accuracy.</p>
+        <ul class="skills-list">
+          <li class="skill-tag">Python</li><li class="skill-tag">Random Forest</li><li class="skill-tag">OpenCV</li><li class="skill-tag">Applied ML</li>
         </ul>
       </div>
     </div>
@@ -280,7 +322,6 @@
     </div>
   </div>
 
-  <!-- NEW: Certifications section restored -->
   <div id="certifications" class="content-section section-grid">
     <h2 class="section-title">Certifications</h2>
     <div class="section-content">
