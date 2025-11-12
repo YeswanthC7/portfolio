@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
-    :root { --primary-blue:#1B5E8F; --light-text:#f8f9fa; --medium-text:#adb5bd; --dark-text:#0f172a; --accent-light:#e0f2fe; --accent-dark:#0ea5e9; --button-bg:#0ea5e9; --button-hover-bg:#0284c7; --header-h:76px; /* updated via JS */ }
+    :root { --primary-blue:#1B5E8F; --light-text:#f8f9fa; --medium-text:#adb5bd; --dark-text:#0f172a; --accent-light:#e0f2fe; --accent-dark:#0ea5e9; --button-bg:#0ea5e9; --button-hover-bg:#0284c7; --header-h:76px; }
     /* Base */
     body{margin:0;font-family:'Inter',sans-serif;background-color:var(--primary-blue);color:var(--light-text);line-height:1.6;scroll-behavior:smooth}
     html{scroll-padding-top:var(--header-h)}
@@ -44,38 +44,26 @@
     .section-grid{display:grid;grid-template-columns:1fr;gap:2rem}
     .section-title{font-size:1.1rem;font-weight:600;text-transform:uppercase;letter-spacing:1px;color:var(--medium-text);margin-bottom:1rem}
     .section-content{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.06);border-radius:14px;padding:1.25rem}
-    .section-content p{margin-top:0}
     .timeline-item{margin-bottom:3rem;position:relative;padding-bottom:1.25rem;border-bottom:1px dashed rgba(255,255,255,.08)}
     .timeline-item:last-child{margin-bottom:0;border-bottom:0}
     .timeline-item h3{margin:0;font-size:1.25rem;font-weight:600}
     .timeline-item h3 .company{color:var(--accent-dark)}
     .timeline-item .date{font-size:.9rem;color:var(--medium-text);margin-bottom:.5rem;display:block}
     .timeline-item .description{font-size:1rem;color:var(--medium-text)}
-    /* About paragraph tweaks */
-    #about .section-content p{max-width:62ch;line-height:1.75}
     /* Timeline rails (Experience, Education, Projects) */
     #experience .section-content, #education .section-content, #projects .section-content{ border-left:2px solid rgba(255,255,255,0.15); padding-left:1.25rem; }
     #experience .timeline-item::before, #education .timeline-item::before, #projects .timeline-item::before{ content:""; position:absolute; left:-1.45rem; top:.5rem; width:10px;height:10px;border-radius:9999px; background:var(--accent-dark); border:2px solid rgba(255,255,255,0.6); box-shadow:0 0 0 2px rgba(14,165,233,0.15); }
-    /* Skills chips — stronger contrast */
+    /* Skills chips */
     .skills-category{margin-bottom:2.5rem}
     .skills-list{display:flex;flex-wrap:wrap;gap:.75rem;padding:0;margin:0;list-style:none}
     .skill-tag{
-      background: #bfe3ff; color: #0a2236; border: 1px solid rgba(14,165,233,.55);
+      background:#bfe3ff;color:#0a2236;border:1px solid rgba(14,165,233,.55);
       padding:.35rem .9rem;border-radius:9999px;font-size:.92rem;font-weight:600;
-      box-shadow: 0 1px 0 rgba(255,255,255,.15) inset, 0 2px 8px rgba(0,0,0,.10);
+      box-shadow:0 1px 0 rgba(255,255,255,.15) inset, 0 2px 8px rgba(0,0,0,.10);
       transition:transform .15s ease, box-shadow .15s ease, background .15s ease;
     }
     .skill-tag:hover{transform:translateY(-1px);box-shadow:0 4px 12px rgba(0,0,0,.16)}
     .skill-tag:focus-visible{outline:3px solid rgba(14,165,233,.7);outline-offset:2px}
-    /* Links */
-    .item-link{display:inline-block;text-decoration:none;color:var(--light-text);transition:color .3s ease}
-    .item-link:hover{color:var(--accent-dark)}
-    /* Contact */
-    .contact-details p{margin:0 0 1rem 0;font-size:1.1rem}
-    .contact-details a{color:var(--light-text);text-decoration:none;transition:color .3s ease}
-    .contact-details a:hover{color:var(--accent-dark)}
-    .resume-button{display:inline-block;background-color:var(--button-bg);color:var(--light-text);padding:.8rem 1.5rem;border-radius:8px;text-decoration:none;font-weight:600;margin-top:1.5rem;transition:background-color .3s ease}
-    .resume-button:hover{background-color:var(--button-hover-bg)}
     /* Footer */
     .main-footer{text-align:center;padding:3rem 0 2rem 0;color:var(--medium-text);font-size:.9rem}
     /* Desktop polish */
@@ -97,19 +85,21 @@
     /* Reduced motion */
     @media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto} .main-nav a::after,.skill-tag{transition:none!important} }
 
-    /* Visibility fix ONLY for Education text */
+    /* Education visibility & emphasis */
     #education .timeline-item h3,
     #education .timeline-item p,
     #education .timeline-item li { color: var(--light-text) !important; }
+    #education .degree { font-weight:700 }           /* bold degree name */
+    #education .coursework-label { font-weight:700 } /* bold "Coursework" */
 
     /* Bulleted lists styling */
-    .role-points, .coursework-list, .project-points { margin: .5rem 0 .5rem 1.25rem; padding-left: 1rem; }
-    .role-points li, .coursework-list li, .project-points li { margin: .25rem 0; }
+    .role-points, .coursework-list, .project-points { margin:.5rem 0 .5rem 1.25rem; padding-left:1rem; }
+    .role-points li, .coursework-list li, .project-points li { margin:.25rem 0; }
   </style>
 </head>
 <body>
 
-<a class="skip-link" href="#about">Skip to content</a>
+<a class="skip-link" href="#experience">Skip to content</a>
 
 <header class="main-header" role="banner">
   <div class="container">
@@ -119,7 +109,7 @@
     </button>
     <nav class="main-nav" id="main-menu" aria-label="Primary">
       <ul>
-        <li><a href="#about">About</a></li>
+        <!-- About removed -->
         <li><a href="#experience">Experience</a></li>
         <li><a href="#projects">Projects</a></li>
         <li><a href="#skills">Skills</a></li>
@@ -152,19 +142,12 @@
     <hr class="hero-divider">
   </section>
 
-  <div id="about" class="content-section section-grid">
-    <h2 class="section-title">About</h2>
-    <div class="section-content">
-      <p>I design reliable software and automation that scale. Recent work includes secure REST services, distributed test automation, and React dashboards for reporting workflows. I enjoy performance tuning, clear systems design, and partnering with cross-functional teams to deliver measurable business value.</p>
-    </div>
-  </div>
-
   <div id="experience" class="content-section section-grid">
     <h2 class="section-title">Experience</h2>
     <div class="section-content">
       <!-- CDF -->
       <div class="timeline-item">
-        <h3>Software Developer at <span class="company">Community Dreams Foundation, Orlando, Florida</span></h3>
+        <h3>Software Developer at <span class="company">Community Dreams Foundation — Sebring, FL</span></h3>
         <span class="date">August 2025 – Present</span>
         <ul class="role-points">
           <li>Developed Spring Boot microservices and normalized PostgreSQL schemas; shipped 10+ REST endpoints for auth and reporting.</li>
@@ -175,9 +158,10 @@
 
       <!-- Synchronoss -->
       <div class="timeline-item">
-        <h3>Software QA Engineer at <span class="company">Synchronoss Technologies</span></h3>
+        <h3>Software QA Engineer at <span class="company">Synchronoss Technologies — Bengaluru, India</span></h3>
         <span class="date">July 2022 – July 2023</span>
         <ul class="role-points">
+          <li><strong>Client: Verizon</strong> — collaborated with product/dev teams to deliver reliable consumer cloud services.</li>
           <li>Built backend test automation and validation tools in Java (TestNG) and Spring Boot; improved API reliability and cut post-release defects by 20%.</li>
           <li>Supported 35+ prod/pre-prod releases with Bamboo CI/CD, regression suites, and log analysis; shortened release cycles by 25%.</li>
           <li>Dockerized the automation framework for multi-env portability; reduced setup time by 40% and stabilized 20+ K8s microservices.</li>
@@ -188,7 +172,7 @@
 
       <!-- TCR -->
       <div class="timeline-item">
-        <h3>Cloud QA & DevOps Intern at <span class="company">TCR Innovation</span></h3>
+        <h3>Cloud QA & DevOps Intern at <span class="company">TCR Innovation — India, Remote</span></h3>
         <span class="date">January 2021 – July 2022</span>
         <ul class="role-points">
           <li>Automated REST API validation in Jenkins/GitHub Actions with Cucumber BDD and Python, improving test reliability by 25%.</li>
@@ -199,7 +183,7 @@
 
       <!-- Lets Grow More -->
       <div class="timeline-item">
-        <h3>Web Development Intern at <span class="company">Lets Grow More</span></h3>
+        <h3>Web Development Intern at <span class="company">Lets Grow More — India, Remote</span></h3>
         <span class="date">September 2021 – October 2021</span>
         <ul class="role-points">
           <li>Built responsive SPAs in HTML/CSS/JS; implemented a React app to fetch and display live API data with robust error handling.</li>
@@ -209,7 +193,7 @@
 
       <!-- Verzeo -->
       <div class="timeline-item">
-        <h3>Machine Learning Intern at <span class="company">Verzeo</span></h3>
+        <h3>Machine Learning Intern at <span class="company">Verzeo — India, Remote</span></h3>
         <span class="date">October 2019 – November 2019</span>
         <ul class="role-points">
           <li>Preprocessed 50k+ reviews in Python; improved classification F1 by 15% via feature engineering and tuning.</li>
@@ -226,8 +210,8 @@
       <div class="timeline-item">
         <h3>University of Texas at Dallas</h3>
         <span class="date">May 2025</span>
-        <p class="description">Master of Science in Business Analytics and Artificial Intelligence</p>
-        <p class="description"><em>Coursework</em></p>
+        <p class="description degree">Master of Science in Business Analytics and Artificial Intelligence</p>
+        <p class="description coursework-label">Coursework</p>
         <ul class="coursework-list">
           <li>Database Foundations for Business Analytics</li>
           <li>Applied Machine Learning</li>
@@ -243,8 +227,8 @@
       <div class="timeline-item">
         <h3>BMS Institute of Technology and Management</h3>
         <span class="date">July 2022</span>
-        <p class="description">Bachelor of Technology in Computer Science and Engineering</p>
-        <p class="description"><em>Coursework</em></p>
+        <p class="description degree">Bachelor of Technology in Computer Science and Engineering</p>
+        <p class="description coursework-label">Coursework</p>
         <ul class="coursework-list">
           <li>Data Structures and Algorithms</li>
           <li>Database Management Systems</li>
@@ -264,7 +248,7 @@
   <div id="projects" class="content-section section-grid">
     <h2 class="section-title">Projects</h2>
     <div class="section-content">
-      <!-- ARShopping (NEW) -->
+      <!-- ARShopping -->
       <div class="timeline-item">
         <h3><a href="https://github.com/YeswanthC7/arshopping" target="_blank" rel="noopener noreferrer" class="item-link">ARShopping — Android AR Furniture Preview App</a></h3>
         <ul class="project-points">
@@ -444,7 +428,7 @@
     });
   });
 
-  // Active nav link on scroll (fixed rootMargin)
+  // Active nav link on scroll
   const links = Array.from(mainMenu.querySelectorAll('a[href^="#"]'));
   const map = new Map(links.map(a => [a.getAttribute('href').slice(1), a]));
   const headerPad = getComputedStyle(document.documentElement).getPropertyValue('--header-h').trim() || '76px';
